@@ -44,6 +44,7 @@
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['action' => 'view', $semanticRequest->id]) ?>
                     <?= $this->Html->link(__('Edit'), ['action' => 'edit', $semanticRequest->id]) ?>
+                    <?= $this->Html->link(__('Execute'), ['action' => 'execute', $semanticRequest->id]) ?>
                     <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $semanticRequest->id], ['confirm' => __('Are you sure you want to delete # {0}?', $semanticRequest->id)]) ?>
                 </td>
             </tr>

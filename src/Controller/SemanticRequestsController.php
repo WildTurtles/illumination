@@ -2,6 +2,10 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\Network\Http\Client;
+use App\Model\Entity\SemanticResponse;
+use Cake\ORM\TableRegistry;
+use Cake\I18n\Time;
 
 /**
  * SemanticRequests Controller
@@ -119,4 +123,132 @@ class SemanticRequestsController extends AppController
 
         return $this->redirect(['action' => 'index']);
     }
+    
+    
+    /**
+     * Execute method
+     *
+     * @param string|null $id Semantic Request id.
+     * @return \Cake\Network\Response|void Redirects on successful execute, renders view otherwise.
+     * @throws \Cake\Network\Exception\NotFoundException When record not found.
+     */
+    public function execute($id = null) {
+        $request = $this->SemanticRequests->get($id, [
+            'contain' => ['Languages', 'Corpuses', 'Categories', 'Accounts']
+        ]);
+
+        $parameter = array();
+
+        $parameter['key'] = "0fa0bafcaf8a0ea00afca0ba0ea0bafca0ca";
+        $parameter[$request->get('category')->get('visiblis_api_code')] = $request->get('field');
+
+        if (!empty($request->get('request'))) {
+            $parameter['req'] = $request->get('request');
+        }
+
+        $parameter['lng'] = $request->get('language')->get('visiblis_code');
+        $parameter['fmt'] = "json";
+        $parameter['crp'] = $request->get('corpus')->get('visiblis_number');
+
+        if (!empty($request->get('block'))) {
+            $parameter['blk'] = $request->get('block');
+        }
+
+        if (!empty($request->get('account_id'))) {
+            $parameter['login'] = $request->get('corpus')->get('login');
+            $parameter['pwd'] = $request->get('corpus')->get('password');
+        }
+
+        $http = new Client();
+        $address = "http://api.visiblis.net/affinite.php";
+
+        $req_response = $http->get($address, $parameter);
+
+        if ($req_response->isOk()) {
+            debug($req_response->body());
+            $json = $req_response->json;
+
+            $resp = array();
+            if (!empty($json['keywords'])) {
+                foreach ($json['keywords'] as $key => $value) {
+                    debug($key . " : " . $value);
+                    $keywordsTable = TableRegistry::get('Keywords');
+
+                    $keyword = $keywordsTable
+                            ->find()
+                            ->where(['name' => $key])
+                            ->first();
+                    if (!empty($keyword)) {
+                        $keyword->updated = Time::now();
+                    } else {
+                        $keyword = $keywordsTable->newEntity([
+                            'name' => $key,
+                            'created' => Time::now()
+                        ]);
+                    }
+                    $keywordsTable->save($keyword);
+                    $keywordLinkRequestsTable = TableRegistry::get('KeywordLinkRequests');
+                    $keywordLinkRequest = $keywordLinkRequestsTable->newEntity([
+                        'keyword_id' => $keyword->id,
+                        'semantic_request_id' => $request->id,
+                        'percentage' => $value,
+                        'created' => Time::now()
+                    ]);
+
+                    $keywordLinkRequestsTable->save($keywordLinkRequest);
+                }
+            } else {
+                if (!empty($json['url'])) {
+                    $resp['url'] = $json['url'];
+                }
+
+                $resp['language_id'] = $request->get('language')->get('id');
+
+
+                if (!empty($json['as_titre'])) {
+                    $resp['as_title'] = $json['as_titre'];
+                }
+
+                if (!empty($json['as_page'])) {
+                    $resp['as_page'] = $json['as_page'];
+                }
+                if (!empty($json['as_texte'])) {
+                    $resp['as_text'] = $json['as_texte'];
+                }
+
+                $resp['semantic_request_id'] = $request['id'];
+
+                $semanticResponsesTable = TableRegistry::get('SemanticResponses');
+                $semanticResponse = $semanticResponsesTable->newEntity();
+
+                $semanticResponse = $semanticResponsesTable->patchEntity($semanticResponse, $resp);
+
+
+                if ($semanticResponsesTable->save($semanticResponse)) {
+                    $this->Flash->success(__('The semantic response has been saved.'));
+                } else {
+                    $this->Flash->error(__('The semantic request could not be saved. Please, try again.'));
+                }
+            }
+        } else {
+            if ($req_response->getStatusCode() === '404') {
+
+                debug($req_response->body());
+
+                $pos = strpos($req_response->body(), ";mess=");
+                $error_number = substr($req_response->body(), 4, $pos - 4);
+                $error_message = substr($req_response->body(), 11);
+
+
+                $this->Flash->error(__('The request could not be execute. Please, try again.'));
+                $this->Flash->error(__('Error number : ' . $error_number . '. Error message : ' . $error_message));
+                $this->Flash->error(__('You should check your resquet is valid.'));
+            } else {
+
+                $this->Flash->error(__('The request could not be execute. Please, try again. Error number ' . $response->getStatusCode()));
+            }
+        }
+        return $this->redirect(['action' => 'view', $request->id]);
+    }
+    
 }
