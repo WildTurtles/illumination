@@ -11,9 +11,9 @@
             <tr>
                 <th scope="col"><?= $this->Paginator->sort('id') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('name') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('key') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('visiblis_api_key') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('ip') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('default') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('is_default') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('created') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('updated') ?></th>
                 <th scope="col" class="actions"><?= __('Actions') ?></th>
@@ -24,9 +24,9 @@
             <tr>
                 <td><?= h($configuration->id) ?></td>
                 <td><?= h($configuration->name) ?></td>
-                <td><?= h($configuration->key) ?></td>
+                <td><?= h($configuration->visiblis_api_key) ?></td>
                 <td><?= h($configuration->ip) ?></td>
-                <td><?= h($configuration->default) ?></td>
+                <td><?= h($configuration->is_default) ?></td>
                 <td><?= h($configuration->created) ?></td>
                 <td><?= h($configuration->updated) ?></td>
                 <td class="actions">

@@ -16,9 +16,9 @@
         <legend><?= __('Edit Configuration') ?></legend>
         <?php
             echo $this->Form->input('name');
-            echo $this->Form->input('key');
+            echo $this->Form->input('visiblis_api_key');
             echo $this->Form->input('ip');
-            echo $this->Form->input('default');
+            echo $this->Form->input('is_default');
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>

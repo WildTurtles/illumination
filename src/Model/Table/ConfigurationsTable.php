@@ -57,14 +57,14 @@ class ConfigurationsTable extends Table
             ->add('name', 'unique', ['rule' => 'validateUnique', 'provider' => 'table']);
 
         $validator
-            ->allowEmpty('key');
+            ->allowEmpty('visiblis_api_key');
 
         $validator
             ->allowEmpty('ip');
 
         $validator
-            ->boolean('default')
-            ->allowEmpty('default');
+            ->boolean('is_default')
+            ->allowEmpty('is_default');
 
         return $validator;
     }

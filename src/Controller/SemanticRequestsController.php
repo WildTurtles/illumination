@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Controller;
 
 use App\Controller\AppController;
@@ -12,16 +13,14 @@ use Cake\I18n\Time;
  *
  * @property \App\Model\Table\SemanticRequestsTable $SemanticRequests
  */
-class SemanticRequestsController extends AppController
-{
+class SemanticRequestsController extends AppController {
 
     /**
      * Index method
      *
      * @return \Cake\Network\Response|null
      */
-    public function index()
-    {
+    public function index() {
         $this->paginate = [
             'contain' => ['Categories', 'Languages', 'Corpuses', 'Accounts']
         ];
@@ -38,8 +37,7 @@ class SemanticRequestsController extends AppController
      * @return \Cake\Network\Response|null
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
-    public function view($id = null)
-    {
+    public function view($id = null) {
         $semanticRequest = $this->SemanticRequests->get($id, [
             'contain' => ['Categories', 'Languages', 'Corpuses', 'Accounts']
         ]);
@@ -53,8 +51,7 @@ class SemanticRequestsController extends AppController
      *
      * @return \Cake\Network\Response|void Redirects on successful add, renders view otherwise.
      */
-    public function add()
-    {
+    public function add() {
         $semanticRequest = $this->SemanticRequests->newEntity();
         if ($this->request->is('post')) {
             $semanticRequest = $this->SemanticRequests->patchEntity($semanticRequest, $this->request->data);
@@ -81,8 +78,7 @@ class SemanticRequestsController extends AppController
      * @return \Cake\Network\Response|void Redirects on successful edit, renders view otherwise.
      * @throws \Cake\Network\Exception\NotFoundException When record not found.
      */
-    public function edit($id = null)
-    {
+    public function edit($id = null) {
         $semanticRequest = $this->SemanticRequests->get($id, [
             'contain' => []
         ]);
@@ -111,8 +107,7 @@ class SemanticRequestsController extends AppController
      * @return \Cake\Network\Response|null Redirects to index.
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
-    public function delete($id = null)
-    {
+    public function delete($id = null) {
         $this->request->allowMethod(['post', 'delete']);
         $semanticRequest = $this->SemanticRequests->get($id);
         if ($this->SemanticRequests->delete($semanticRequest)) {
@@ -123,8 +118,7 @@ class SemanticRequestsController extends AppController
 
         return $this->redirect(['action' => 'index']);
     }
-    
-    
+
     /**
      * Execute method
      *
@@ -137,9 +131,20 @@ class SemanticRequestsController extends AppController
             'contain' => ['Languages', 'Corpuses', 'Categories', 'Accounts']
         ]);
 
+        $configurationsTable = TableRegistry::get('Configurations');
+
+        $configuration = $configurationsTable
+                ->find()
+                ->where(['is_default' => '1'])
+                ->first();
+        if (empty($configuration)) {
+            $this->Flash->error(__('You should check your default api key.'));
+            return $this->redirect(['controller' => 'configurations' ,'action' => 'index']);
+        }
+
         $parameter = array();
 
-        $parameter['key'] = "0fa0bafcaf8a0ea00afca0ba0ea0bafca0ca";
+        $parameter['key'] = $configuration->visiblis_api_key;
         $parameter[$request->get('category')->get('visiblis_api_code')] = $request->get('field');
 
         if (!empty($request->get('request'))) {
@@ -171,7 +176,6 @@ class SemanticRequestsController extends AppController
             $resp = array();
             if (!empty($json['keywords'])) {
                 foreach ($json['keywords'] as $key => $value) {
-                    debug($key . " : " . $value);
                     $keywordsTable = TableRegistry::get('Keywords');
 
                     $keyword = $keywordsTable
@@ -250,5 +254,5 @@ class SemanticRequestsController extends AppController
         }
         return $this->redirect(['action' => 'view', $request->id]);
     }
-    
+
 }

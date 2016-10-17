@@ -19,8 +19,8 @@
             <td><?= h($configuration->name) ?></td>
         </tr>
         <tr>
-            <th scope="row"><?= __('Key') ?></th>
-            <td><?= h($configuration->key) ?></td>
+            <th scope="row"><?= __('Visiblis Api Key') ?></th>
+            <td><?= h($configuration->visiblis_api_key) ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('Ip') ?></th>
@@ -35,8 +35,8 @@
             <td><?= h($configuration->updated) ?></td>
         </tr>
         <tr>
-            <th scope="row"><?= __('Default') ?></th>
-            <td><?= $configuration->default ? __('Yes') : __('No'); ?></td>
+            <th scope="row"><?= __('Is Default') ?></th>
+            <td><?= $configuration->is_default ? __('Yes') : __('No'); ?></td>
         </tr>
     </table>
 </div>

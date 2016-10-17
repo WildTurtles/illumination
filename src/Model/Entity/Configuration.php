@@ -8,9 +8,9 @@ use Cake\ORM\Entity;
  *
  * @property string $id
  * @property string $name
- * @property string $key
+ * @property string $visiblis_api_key
  * @property string $ip
- * @property bool $default
+ * @property bool $is_default
  * @property \Cake\I18n\Time $created
  * @property \Cake\I18n\Time $updated
  */
