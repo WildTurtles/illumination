@@ -10,7 +10,7 @@ CREATE TABLE configurations (
 CREATE INDEX configurations_id 
   ON configurations (id);
 CREATE INDEX configurations_key 
-  ON configurations (visablis_api_key);
+  ON configurations (visiblis_api_key);
 CREATE INDEX configurations_ip 
   ON configurations (ip);
 CREATE INDEX configurations_default 
