@@ -36,6 +36,23 @@ class SemanticResponsesController extends AppController
      */
     public function view($id = null)
     {
+        if ($id !=null)
+        {
+            $this->loadModel('Categories');
+            $this->loadModel('SemanticRequests');
+            
+            $id_seman_request = $this->SemanticResponses->get($id)->semantic_request_id;
+            
+            $id_categories = $this->SemanticRequests->get($id_seman_request)->category_id;
+            
+            $is_url = false;
+            if (($this->Categories->get($id_categories)->visiblis_api_code) == 'url')
+            {
+                $is_url = true;
+            }
+            $this->set('is_url', $is_url);
+        }        
+        
         $semanticResponse = $this->SemanticResponses->get($id, [
             'contain' => ['Languages', 'SemanticRequests']
         ]);

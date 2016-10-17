@@ -130,6 +130,8 @@ class SemanticRequestsController extends AppController {
         $request = $this->SemanticRequests->get($id, [
             'contain' => ['Languages', 'Corpuses', 'Categories', 'Accounts']
         ]);
+        $request->count++;
+        $this->SemanticRequests->save($request);
 
         $configurationsTable = TableRegistry::get('Configurations');
 
@@ -170,9 +172,7 @@ class SemanticRequestsController extends AppController {
         $req_response = $http->get($address, $parameter);
 
         if ($req_response->isOk()) {
-            debug($req_response->body());
             $json = $req_response->json;
-
             $resp = array();
             if (!empty($json['keywords'])) {
                 foreach ($json['keywords'] as $key => $value) {
@@ -190,6 +190,7 @@ class SemanticRequestsController extends AppController {
                             'created' => Time::now()
                         ]);
                     }
+                    $keyword->count = $request->count;
                     $keywordsTable->save($keyword);
                     $keywordLinkRequestsTable = TableRegistry::get('KeywordLinkRequests');
                     $keywordLinkRequest = $keywordLinkRequestsTable->newEntity([
@@ -226,7 +227,7 @@ class SemanticRequestsController extends AppController {
                 $semanticResponse = $semanticResponsesTable->newEntity();
 
                 $semanticResponse = $semanticResponsesTable->patchEntity($semanticResponse, $resp);
-
+                $semanticResponse->count = $request->count;
 
                 if ($semanticResponsesTable->save($semanticResponse)) {
                     $this->Flash->success(__('The semantic response has been saved.'));
