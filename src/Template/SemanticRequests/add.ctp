@@ -23,7 +23,6 @@
         <legend><?= __('Add Semantic Request') ?></legend>
         <?php
             echo $this->Form->input('name');
-            echo $this->Form->input('count');
             echo $this->Form->input('category_id', ['options' => $categories]);
             echo $this->Form->input('field');
             echo $this->Form->input('request');
