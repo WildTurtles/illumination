@@ -2,6 +2,7 @@
     <ul class="side-nav">
         <li class="heading"><?= __('Actions') ?></li>
         <li><?= $this->Html->link(__('New Corpus'), ['action' => 'add']) ?></li>
+        <li><?= $this->Html->link(__('Semantic Requests'), ['controller' => 'SemanticRequests', 'action' => 'index']) ?></li>
     </ul>
 </nav>
 <div class="corpuses index large-9 medium-8 columns content">

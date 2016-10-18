@@ -2,6 +2,7 @@
     <ul class="side-nav">
         <li class="heading"><?= __('Actions') ?></li>
         <li><?= $this->Html->link(__('New Account'), ['action' => 'add']) ?></li>
+        <li><?= $this->Html->link(__('Semantic Requests'), ['controller' => 'SemanticRequests', 'action' => 'index']) ?></li>
     </ul>
 </nav>
 <div class="accounts index large-9 medium-8 columns content">
