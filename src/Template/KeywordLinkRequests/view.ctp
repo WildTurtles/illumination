@@ -5,8 +5,6 @@
         <li><?= $this->Form->postLink(__('Delete Keyword Link Request'), ['action' => 'delete', $keywordLinkRequest->id], ['confirm' => __('Are you sure you want to delete # {0}?', $keywordLinkRequest->id)]) ?> </li>
         <li><?= $this->Html->link(__('List Keyword Link Requests'), ['action' => 'index']) ?> </li>
         <li><?= $this->Html->link(__('New Keyword Link Request'), ['action' => 'add']) ?> </li>
-        <li><?= $this->Html->link(__('List Keywords'), ['controller' => 'Keywords', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Keyword'), ['controller' => 'Keywords', 'action' => 'add']) ?> </li>
         <li><?= $this->Html->link(__('List Semantic Requests'), ['controller' => 'SemanticRequests', 'action' => 'index']) ?> </li>
         <li><?= $this->Html->link(__('New Semantic Request'), ['controller' => 'SemanticRequests', 'action' => 'add']) ?> </li>
     </ul>

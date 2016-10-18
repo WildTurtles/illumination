@@ -20,7 +20,6 @@
         <tbody>
             <?php foreach ($languages as $language): ?>
             <tr>
-                <td><?= h($language->id) ?></td>
                 <td><?= h($language->name) ?></td>
                 <td><?= h($language->visiblis_code) ?></td>
                 <td><?= h($language->created) ?></td>

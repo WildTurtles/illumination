@@ -10,7 +10,11 @@
 <fieldset>
         <legend><?= __('Informations : ') ?></legend>    
         <div>
-            Le champ requête doit etre rempli dans les requêtes de la catégorie Titre.
+            Le champ requête doit etre rempli dans les requêtes de la catégorie titre et texte.
+            </br>
+            Le champ field correspond selon le cas à l'url, le titre ou le texte.
+            </br>
+            Le champ block correspond à un selecteur de bloc au format JQuery.
         </div>
         </fieldset>
     <?= $this->Form->create($semanticRequest) ?>

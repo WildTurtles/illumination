@@ -6,7 +6,7 @@
         <li><?= $this->Html->link(__('List Users'), ['action' => 'index']) ?> </li>
         <li><?= $this->Html->link(__('New User'), ['action' => 'add']) ?> </li>
         <li><?= $this->Html->link(__('List Groups'), ['controller' => 'Groups', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Group'), ['controller' => 'Groups', 'action' => 'add']) ?> </li>
+       <!-- <li><?= $this->Html->link(__('New Group'), ['controller' => 'Groups', 'action' => 'add']) ?> </li> -->
     </ul>
 </nav>
 <div class="users view large-9 medium-8 columns content">
@@ -38,30 +38,30 @@
         </tr>
     </table>
     <div class="related">
-        <h4><?= __('Related Groups') ?></h4>
+        <!-- <h4><?= __('Related Groups') ?></h4> -->
         <?php if (!empty($user->groups)): ?>
-        <table cellpadding="0" cellspacing="0">
+        <!-- <table cellpadding="0" cellspacing="0">
             <tr>
                 <th scope="col"><?= __('Id') ?></th>
                 <th scope="col"><?= __('Name') ?></th>
                 <th scope="col"><?= __('Created') ?></th>
                 <th scope="col"><?= __('Updated') ?></th>
                 <th scope="col" class="actions"><?= __('Actions') ?></th>
-            </tr>
-            <?php foreach ($user->groups as $groups): ?>
-            <tr>
+            </tr> -->
+            //<?php foreach ($user->groups as $groups): ?>
+            <!-- <tr>
                 <td><?= h($groups->id) ?></td>
                 <td><?= h($groups->name) ?></td>
                 <td><?= h($groups->created) ?></td>
                 <td><?= h($groups->updated) ?></td>
-                <td class="actions">
-                    <?= $this->Html->link(__('View'), ['controller' => 'Groups', 'action' => 'view', $groups->id]) ?>
-                    <?= $this->Html->link(__('Edit'), ['controller' => 'Groups', 'action' => 'edit', $groups->id]) ?>
-                    <?= $this->Form->postLink(__('Delete'), ['controller' => 'Groups', 'action' => 'delete', $groups->id], ['confirm' => __('Are you sure you want to delete # {0}?', $groups->id)]) ?>
-                </td>
-            </tr>
-            <?php endforeach; ?>
-        </table>
-        <?php endif; ?>
-    </div>
+                <td class="actions"> -->
+                    //<?= $this->Html->link(__('View'), ['controller' => 'Groups', 'action' => 'view', $groups->id]) ?>
+                    //<?= $this->Html->link(__('Edit'), ['controller' => 'Groups', 'action' => 'edit', $groups->id]) ?>
+                    //<?= $this->Form->postLink(__('Delete'), ['controller' => 'Groups', 'action' => 'delete', $groups->id], ['confirm' => __('Are you sure you want to delete # {0}?', $groups->id)]) ?>
+                <!-- </td>
+            </tr> -->
+            //<?php endforeach; ?>
+        <!-- </table> -->
+        //<?php endif; ?>
+    <!-- </div> -->
 </div>

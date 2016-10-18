@@ -9,26 +9,22 @@
     <table cellpadding="0" cellspacing="0">
         <thead>
             <tr>
-                <th scope="col"><?= $this->Paginator->sort('id') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('name') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('visiblis_api_key') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('ip') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('is_default') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('created') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('updated') ?></th>
                 <th scope="col" class="actions"><?= __('Actions') ?></th>
             </tr>
         </thead>
         <tbody>
             <?php foreach ($configurations as $configuration): ?>
             <tr>
-                <td><?= h($configuration->id) ?></td>
                 <td><?= h($configuration->name) ?></td>
                 <td><?= h($configuration->visiblis_api_key) ?></td>
                 <td><?= h($configuration->ip) ?></td>
                 <td><?= h($configuration->is_default) ?></td>
                 <td><?= h($configuration->created) ?></td>
-                <td><?= h($configuration->updated) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['action' => 'view', $configuration->id]) ?>
                     <?= $this->Html->link(__('Edit'), ['action' => 'edit', $configuration->id]) ?>
