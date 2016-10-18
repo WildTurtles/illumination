@@ -7,6 +7,7 @@ use Cake\Network\Http\Client;
 use App\Model\Entity\SemanticResponse;
 use Cake\ORM\TableRegistry;
 use Cake\I18n\Time;
+use Cake\Collection\Collection;
 
 /**
  * SemanticRequests Controller
@@ -37,14 +38,65 @@ class SemanticRequestsController extends AppController {
      * @return \Cake\Network\Response|null
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
-    public function view($id = null) {
+    public function view($id = null) 
+    {
+        $this->paginate = [
+            'contain' => ['KeywordLinkRequests']
+        ];
+        $this->loadModel('KeywordLinkRequests');
+        $this->loadModel('Keywords');
+        $this->loadModel('SemanticResponse');
+        
         $semanticRequest = $this->SemanticRequests->get($id, [
             'contain' => ['Categories', 'Languages', 'Corpuses', 'Accounts']
         ]);
 
-        $this->set('semanticRequest', $semanticRequest);
-        $this->set('_serialize', ['semanticRequest']);
+        
+        if (empty ($semanticRequest->request))
+        {
+            $keywordLinkRequestsTable = TableRegistry::get('KeywordLinkRequests');
+
+        
+            $keywordLinkRequests = $keywordLinkRequestsTable
+                    ->find('all', ['contain' => ['Keywords']])
+                    ->where(['semantic_request_id' => $semanticRequest->id]);
+        
+            $result = $keywordLinkRequests->all();
+
+            $collection = new Collection($result->toArray());
+            $temp = $result->toArray();
+//             $temp2 =$this->paginate($temp);
+            $this->set('keywordLinkRequests', $temp);
+        }
+        else
+        {
+            $semanticResponsesTable = TableRegistry::get('SemanticResponses');
+            
+            $semanticResponses  = $semanticResponsesTable
+                    ->find('all')
+                    ->where(['semantic_request_id' => $semanticRequest->id]);
+        
+            if (!empty($semanticResponses->all()))
+            {
+                $result = $semanticResponses->all();
+                $collection = new Collection($result->toArray());
+                $temp = $result->toArray();
+    //             $temp2 =$this->paginate($temp);
+                $this->set('semanticResponses', $temp);
+            }
+        }
+
+        
+
+            
+            
+            $this->set('semanticRequest', $semanticRequest);
+            $this->set('_serialize', ['semanticRequest']);
     }
+        
+
+
+    
 
     /**
      * Add method

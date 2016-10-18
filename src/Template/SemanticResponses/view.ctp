@@ -1,4 +1,16 @@
 
+    
+  
+            <nav class="large-3 medium-4 columns" id="actions-sidebar">
+    <ul class="side-nav">
+         <li class="heading"><?= __('Actions') ?></li>
+            <li><?= $this->Html->link(__('All Semantic Request'), ['controller' => 'SemanticRequests', 'action' => 'index']) ?></li>
+           <li> <?= $this->Html->link(__('View Semantic Request'), ['controller' => 'SemanticRequests', 'action' => 'view', $semanticResponse->semantic_request_id]) ?></li>
+    </ul>
+</nav>
+
+  <div  class=" semanticResponses view large-9 medium-8 columns content">
+  <div id="resTitre" class="units-row ">
     <?= $this->Html->css('visiblis/kube.css') ?>
     <?= $this->Html->css('visiblis/visiblis-font.css') ?>
     <?= $this->Html->css('visiblis/tools.css') ?>
@@ -10,11 +22,6 @@
     <?php echo $this->Html->script('visiblis/jquery.tooltipster.min.js');?>
     <?php echo $this->Html->script('visiblis/jquery.validate.min.js');?>
     <?php echo $this->Html->script('visiblis/visiblis-v2.js');?>
-    
-  
-
-
-  <div id="resTitre" class="units-row">
             <table width="100%">
                 <tr>
                     <td>
@@ -163,6 +170,7 @@
                                                     customTickMarks: [0,15,30,50,70,100],
                                                     majorTickMarks: {length: 40,lineWidth: 1,interval: 10,offset: 0.75},
                                                     labels: {orientation: 'horizontal',interval: 10,offset: 1.00},
+
                                                     needles: [{value: valeur2Toto,type: 'pointer',outerOffset: 0.8,mediumOffset: 0.7,width: 10,fillStyle: '#485961'}],
                                                     ranges: 
                                                     [
