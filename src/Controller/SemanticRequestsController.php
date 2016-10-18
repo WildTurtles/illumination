@@ -62,8 +62,6 @@ class SemanticRequestsController extends AppController {
                     ->where(['semantic_request_id' => $semanticRequest->id]);
         
             $result = $keywordLinkRequests->all();
-
-            $collection = new Collection($result->toArray());
             $temp = $result->toArray();
 //             $temp2 =$this->paginate($temp);
             $this->set('keywordLinkRequests', $temp);
@@ -72,17 +70,23 @@ class SemanticRequestsController extends AppController {
         {
             $semanticResponsesTable = TableRegistry::get('SemanticResponses');
             
+            $config = [
+                'order' => [
+                        'created' => 'asc'
+                ]
+            ];
+                        
             $semanticResponses  = $semanticResponsesTable
                     ->find('all')
                     ->where(['semantic_request_id' => $semanticRequest->id]);
         
-            if (!empty($semanticResponses->all()))
+            //$res = $this->Paginator->paginate($semanticResponses->all(), $config);
+            //if (!empty($res))
+             $result = $semanticResponses->all();
+            
+            if (!empty($result))
             {
-                $result = $semanticResponses->all();
-                $collection = new Collection($result->toArray());
-                $temp = $result->toArray();
-    //             $temp2 =$this->paginate($temp);
-                $this->set('semanticResponses', $temp);
+                $this->set('semanticResponses', $result->toArray());
             }
         }
 

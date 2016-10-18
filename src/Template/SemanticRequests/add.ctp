@@ -2,18 +2,19 @@
     <ul class="side-nav">
         <li class="heading"><?= __('Actions') ?></li>
         <li><?= $this->Html->link(__('List Semantic Requests'), ['action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('List Categories'), ['controller' => 'Categories', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Category'), ['controller' => 'Categories', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Languages'), ['controller' => 'Languages', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Language'), ['controller' => 'Languages', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Corpuses'), ['controller' => 'Corpuses', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Corpus'), ['controller' => 'Corpuses', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Accounts'), ['controller' => 'Accounts', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Account'), ['controller' => 'Accounts', 'action' => 'add']) ?></li>
     </ul>
 </nav>
+
+
 <div class="semanticRequests form large-9 medium-8 columns content">
+<fieldset>
+        <legend><?= __('Informations : ') ?></legend>    
+        <div>
+            Le champ requête doit etre rempli dans les requêtes de la catégorie Titre.
+        </div>
+        </fieldset>
     <?= $this->Form->create($semanticRequest) ?>
+
     <fieldset>
         <legend><?= __('Add Semantic Request') ?></legend>
         <?php

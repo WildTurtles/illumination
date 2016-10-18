@@ -378,11 +378,11 @@ pre {
 }
 
 .top-bar.expanded .title-area {
-    background: #01545b;
+    background: #333333;
 }
 
 .top-bar.expanded, .top-bar,.top-bar-section ul li,.top-bar-section li:not(.has-form) a:not(.button) {
-    background: #116d76;
+    background: #0281a2;
 }
 
 .top-bar-section li:not(.has-form) a:not(.button):hover {

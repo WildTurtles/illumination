@@ -15,18 +15,8 @@
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
         <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('Edit Semantic Request'), ['action' => 'edit', $semanticRequest->id]) ?> </li>
-        <li><?= $this->Form->postLink(__('Delete Semantic Request'), ['action' => 'delete', $semanticRequest->id], ['confirm' => __('Are you sure you want to delete # {0}?', $semanticRequest->id)]) ?> </li>
         <li><?= $this->Html->link(__('List Semantic Requests'), ['action' => 'index']) ?> </li>
         <li><?= $this->Html->link(__('New Semantic Request'), ['action' => 'add']) ?> </li>
-        <li><?= $this->Html->link(__('List Categories'), ['controller' => 'Categories', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Category'), ['controller' => 'Categories', 'action' => 'add']) ?> </li>
-        <li><?= $this->Html->link(__('List Languages'), ['controller' => 'Languages', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Language'), ['controller' => 'Languages', 'action' => 'add']) ?> </li>
-        <li><?= $this->Html->link(__('List Corpuses'), ['controller' => 'Corpuses', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Corpus'), ['controller' => 'Corpuses', 'action' => 'add']) ?> </li>
-        <li><?= $this->Html->link(__('List Accounts'), ['controller' => 'Accounts', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Account'), ['controller' => 'Accounts', 'action' => 'add']) ?> </li>
     </ul>
 </nav>
 <div class="semanticRequests view large-9 medium-8 columns content">
@@ -83,7 +73,7 @@
             <tr>
                 <th scope="col"><?= $this->Paginator->sort('keyword_id') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('percentage') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('created') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('created', null, ['direction' => 'desc']) ?></th>
                 <th scope="col"><?= $this->Paginator->sort('updated') ?></th>
                 <th scope="col" class="actions"><?= __('Actions') ?></th>
             </tr>
