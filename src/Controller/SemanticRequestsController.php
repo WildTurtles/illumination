@@ -182,7 +182,8 @@ class SemanticRequestsController extends AppController {
      * @return \Cake\Network\Response|void Redirects on successful execute, renders view otherwise.
      * @throws \Cake\Network\Exception\NotFoundException When record not found.
      */
-    public function execute($id = null) {
+    public function execute($id = null) 
+    {
         $request = $this->SemanticRequests->get($id, [
             'contain' => ['Languages', 'Corpuses', 'Categories', 'Accounts']
         ]);
@@ -229,11 +230,10 @@ class SemanticRequestsController extends AppController {
 
         if ($req_response->isOk()) {
             $json = $req_response->json;
-            $resp = array();
             if (!empty($json['keywords'])) {
+                $keywordLinkRequestsTable = TableRegistry::get('KeywordLinkRequests');
+                $keywordsTable = TableRegistry::get('Keywords');
                 foreach ($json['keywords'] as $key => $value) {
-                    $keywordsTable = TableRegistry::get('Keywords');
-
                     $keyword = $keywordsTable
                             ->find()
                             ->where(['name' => $key])
@@ -246,12 +246,12 @@ class SemanticRequestsController extends AppController {
                             'created' => Time::now()
                         ]);
                     }
-                    $keyword->count = $request->count;
                     $keywordsTable->save($keyword);
-                    $keywordLinkRequestsTable = TableRegistry::get('KeywordLinkRequests');
+                    
                     $keywordLinkRequest = $keywordLinkRequestsTable->newEntity([
                         'keyword_id' => $keyword->id,
                         'semantic_request_id' => $request->id,
+                        'count' => $request->count,
                         'percentage' => $value,
                         'created' => Time::now()
                     ]);
@@ -259,6 +259,7 @@ class SemanticRequestsController extends AppController {
                     $keywordLinkRequestsTable->save($keywordLinkRequest);
                 }
             } else {
+                $resp = array();
                 if (!empty($json['url'])) {
                     $resp['url'] = $json['url'];
                 }
@@ -293,8 +294,6 @@ class SemanticRequestsController extends AppController {
             }
         } else {
             if ($req_response->getStatusCode() === '404') {
-
-                debug($req_response->body());
 
                 $pos = strpos($req_response->body(), ";mess=");
                 $error_number = substr($req_response->body(), 4, $pos - 4);
