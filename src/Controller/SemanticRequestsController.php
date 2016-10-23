@@ -8,6 +8,7 @@ use App\Model\Entity\SemanticResponse;
 use Cake\ORM\TableRegistry;
 use Cake\I18n\Time;
 use Cake\Collection\Collection;
+use Cake\Log\Log;
 
 /**
  * SemanticRequests Controller
@@ -60,10 +61,11 @@ class SemanticRequestsController extends AppController {
             $keywordLinkRequests = $keywordLinkRequestsTable
                     ->find('all', ['contain' => ['Keywords']])
                     ->where(['semantic_request_id' => $semanticRequest->id]);
-        
+		$keywordLinkRequests = $keywordLinkRequests->find ('all', array(
+			'order' => array('count' => 'DESC')));
             $result = $keywordLinkRequests->all();
             $temp = $result->toArray();
-//             $temp2 =$this->paginate($temp);
+
             $this->set('keywordLinkRequests', $temp);
         }
         else
@@ -108,9 +110,20 @@ class SemanticRequestsController extends AppController {
      * @return \Cake\Network\Response|void Redirects on successful add, renders view otherwise.
      */
     public function add() {
+        $categoriesTable = TableRegistry::get('Categories');
+        $url = $categoriesTable 
+                ->find()
+                ->where(['visiblis_api_code' => 'url'])
+                ->first();
+      
         $semanticRequest = $this->SemanticRequests->newEntity();
         if ($this->request->is('post')) {
             $semanticRequest = $this->SemanticRequests->patchEntity($semanticRequest, $this->request->data);
+          
+            if (($semanticRequest->category_id)!=$url)
+            {
+                $semanticRequest->block='';
+            }
             if ($this->SemanticRequests->save($semanticRequest)) {
                 $this->Flash->success(__('The semantic request has been saved.'));
 
@@ -182,8 +195,7 @@ class SemanticRequestsController extends AppController {
      * @return \Cake\Network\Response|void Redirects on successful execute, renders view otherwise.
      * @throws \Cake\Network\Exception\NotFoundException When record not found.
      */
-    public function execute($id = null) 
-    {
+    public function execute($id = null){
         $request = $this->SemanticRequests->get($id, [
             'contain' => ['Languages', 'Corpuses', 'Categories', 'Accounts']
         ]);
@@ -191,7 +203,7 @@ class SemanticRequestsController extends AppController {
         $this->SemanticRequests->save($request);
 
         $configurationsTable = TableRegistry::get('Configurations');
-
+        
         $configuration = $configurationsTable
                 ->find()
                 ->where(['is_default' => '1'])
@@ -213,10 +225,11 @@ class SemanticRequestsController extends AppController {
         $parameter['lng'] = $request->get('language')->get('visiblis_code');
         $parameter['fmt'] = "json";
         $parameter['crp'] = $request->get('corpus')->get('visiblis_number');
-
+    
         if (!empty($request->get('block'))) {
             $parameter['blk'] = $request->get('block');
         }
+        
 
         if (!empty($request->get('account_id'))) {
             $parameter['login'] = $request->get('corpus')->get('login');
@@ -311,4 +324,112 @@ class SemanticRequestsController extends AppController {
         return $this->redirect(['action' => 'view', $request->id]);
     }
 
+    public function cocon($id = null)
+    {
+        $configurationsTable = TableRegistry::get('Configurations');
+
+        $configuration = $configurationsTable
+                ->find()
+                ->where(['is_default' => '1'])
+                ->first();
+        if (empty($configuration)) {
+            $this->Flash->error(__('You should check your default api key.'));
+            return $this->redirect(['controller' => 'configurations' ,'action' => 'index']);
+        }
+        
+        $parameter = array();
+        $parameter['key'] = $configuration->visiblis_api_key;
+        $parameter['url'] = "http://www.visiblis.net/";
+        //$parameter['url'] = "https://wild-turtles.com";
+        $parameter['mail'] = "estelle.perez79@laposte.net";
+        $parameter['clr'] = 5;
+        //$parameter['ping'] = ;
+        
+        debug ($parameter);
+        
+        $http = new Client();
+        $address = "http://api.visiblis.net/cocon.php";
+
+        $req_response = $http->get($address, $parameter);
+        
+        if ($req_response->isOk()) {
+
+            $json = $req_response->json;
+            
+        }else {
+            if ($req_response->getStatusCode() === '404') {
+
+                $pos = strpos($req_response->body(), ";mess=");
+                $error_number = substr($req_response->body(), 4, $pos - 4);
+                $error_message = substr($req_response->body(), 11);
+
+
+                $this->Flash->error(__('The request could not be execute. Please, try again.'));
+                $this->Flash->error(__('Error number : ' . $error_number . '. Error message : ' . $error_message));
+                $this->Flash->error(__('You should check your resquet is valid.'));
+            } else {
+
+                $this->Flash->error(__('The request could not be execute. Please, try again. Error number ' . $response->getStatusCode()));
+            }
+
+        
+    }
+    return $this->redirect(['action' => 'index']);
+    }
+    
+    public function response($token = null)
+    {
+        $configurationsTable = TableRegistry::get('Configurations');
+
+        $configuration = $configurationsTable
+                ->find()
+                ->where(['is_default' => '1'])
+                ->first();
+        if (empty($configuration)) {
+            $this->Flash->error(__('You should check your default api key.'));
+            return $this->redirect(['controller' => 'configurations' ,'action' => 'index']);
+        }
+        
+        
+        $token = '580798545a89b';
+        Log::write(LOG_ERR, $token);
+        
+        $parameter = array();
+        $parameter['key'] = $configuration->visiblis_api_key;
+        $parameter['tok'] = $token;
+        $parameter['fmt'] = 'json';
+        //$parameter['fle'] = ;
+        
+        $http = new Client();
+        $address = "http://api.visiblis.net/cocon.php";
+
+        $req_response = $http->get($address, $parameter);
+        
+        if ($req_response->isOk()) {
+            debug($req_response->body());
+            $json = $req_response->json;
+            debug ($json);
+            exit();
+        }else {
+            if ($req_response->getStatusCode() === '404') {
+
+                $pos = strpos($req_response->body(), ";mess=");
+                $error_number = substr($req_response->body(), 4, $pos - 4);
+                $error_message = substr($req_response->body(), 11);
+
+
+                $this->Flash->error(__('The request could not be execute. Please, try again.'));
+                $this->Flash->error(__('Error number : ' . $error_number . '. Error message : ' . $error_message));
+                $this->Flash->error(__('You should check your resquet is valid.'));
+            } else {
+
+                $this->Flash->error(__('The request could not be execute. Please, try again. Error number ' . $response->getStatusCode()));
+            }
+        }
+        return $this->redirect(['action' => 'index']);
+    }
+    
+
 }
+
+
