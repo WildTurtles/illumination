@@ -1,0 +1,3 @@
+ALTER TABLE queue_elements DROP CONSTRAINT FKqueue_elem644281;
+DROP TABLE IF EXISTS queue_elements CASCADE;
+

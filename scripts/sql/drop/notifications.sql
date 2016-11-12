@@ -1,0 +1,3 @@
+ALTER TABLE notifications DROP CONSTRAINT FKnotificati502086;
+DROP TABLE IF EXISTS notifications CASCADE;
+
