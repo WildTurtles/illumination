@@ -130,6 +130,7 @@
                     <td><?= h($semanticResponse->created) ?></td>
                     <td class="actions">
                         <?= $this->Html->link(__('View'), ['controller' => 'SemanticResponses', 'action' => 'view', $semanticResponse->id]) ?>
+                        
                     </td>
                 </tr>
             <?php endforeach; ?>
