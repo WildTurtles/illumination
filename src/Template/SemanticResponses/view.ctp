@@ -2,7 +2,7 @@
 <?= $this->Html->css('visiblis/visiblis-font.css') ?>
 <?= $this->Html->css('visiblis/tooltipster.css') ?>
 <?= $this->Html->css('visiblis/jquery.jqGauges.css') ?>
-<?= $this->Html->css('visiblis/test.css') ?>
+<?= $this->Html->css('visiblis/title.css') ?>
 
 <?php echo $this->Html->script('visiblis/jquery-1.11.0.min.js');?>
 <?php echo $this->Html->script('visiblis/jquery.jqGauges.min.js');?>
