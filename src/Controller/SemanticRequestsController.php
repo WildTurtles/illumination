@@ -8,6 +8,7 @@ use App\Model\Entity\SemanticResponse;
 use Cake\ORM\TableRegistry;
 use Cake\I18n\Time;
 use Cake\Collection\Collection;
+use Cake\Log\Log;
 
 /**
  * SemanticRequests Controller
@@ -60,10 +61,11 @@ class SemanticRequestsController extends AppController {
             $keywordLinkRequests = $keywordLinkRequestsTable
                     ->find('all', ['contain' => ['Keywords']])
                     ->where(['semantic_request_id' => $semanticRequest->id]);
-        
+		$keywordLinkRequests = $keywordLinkRequests->find ('all', array(
+			'order' => array('count' => 'DESC')));
             $result = $keywordLinkRequests->all();
             $temp = $result->toArray();
-//             $temp2 =$this->paginate($temp);
+
             $this->set('keywordLinkRequests', $temp);
         }
         else
@@ -108,9 +110,20 @@ class SemanticRequestsController extends AppController {
      * @return \Cake\Network\Response|void Redirects on successful add, renders view otherwise.
      */
     public function add() {
+        $categoriesTable = TableRegistry::get('Categories');
+        $url = $categoriesTable 
+                ->find()
+                ->where(['visiblis_api_code' => 'url'])
+                ->first();
+      
         $semanticRequest = $this->SemanticRequests->newEntity();
         if ($this->request->is('post')) {
             $semanticRequest = $this->SemanticRequests->patchEntity($semanticRequest, $this->request->data);
+          
+            if (($semanticRequest->category_id)!=$url)
+            {
+                $semanticRequest->block='';
+            }
             if ($this->SemanticRequests->save($semanticRequest)) {
                 $this->Flash->success(__('The semantic request has been saved.'));
 
@@ -182,7 +195,7 @@ class SemanticRequestsController extends AppController {
      * @return \Cake\Network\Response|void Redirects on successful execute, renders view otherwise.
      * @throws \Cake\Network\Exception\NotFoundException When record not found.
      */
-    public function execute($id = null) {
+    public function execute($id = null){
         $request = $this->SemanticRequests->get($id, [
             'contain' => ['Languages', 'Corpuses', 'Categories', 'Accounts']
         ]);
@@ -190,7 +203,7 @@ class SemanticRequestsController extends AppController {
         $this->SemanticRequests->save($request);
 
         $configurationsTable = TableRegistry::get('Configurations');
-
+        
         $configuration = $configurationsTable
                 ->find()
                 ->where(['is_default' => '1'])
@@ -212,10 +225,11 @@ class SemanticRequestsController extends AppController {
         $parameter['lng'] = $request->get('language')->get('visiblis_code');
         $parameter['fmt'] = "json";
         $parameter['crp'] = $request->get('corpus')->get('visiblis_number');
-
+    
         if (!empty($request->get('block'))) {
             $parameter['blk'] = $request->get('block');
         }
+        
 
         if (!empty($request->get('account_id'))) {
             $parameter['login'] = $request->get('corpus')->get('login');
@@ -229,11 +243,10 @@ class SemanticRequestsController extends AppController {
 
         if ($req_response->isOk()) {
             $json = $req_response->json;
-            $resp = array();
             if (!empty($json['keywords'])) {
+                $keywordLinkRequestsTable = TableRegistry::get('KeywordLinkRequests');
+                $keywordsTable = TableRegistry::get('Keywords');
                 foreach ($json['keywords'] as $key => $value) {
-                    $keywordsTable = TableRegistry::get('Keywords');
-
                     $keyword = $keywordsTable
                             ->find()
                             ->where(['name' => $key])
@@ -246,12 +259,12 @@ class SemanticRequestsController extends AppController {
                             'created' => Time::now()
                         ]);
                     }
-                    $keyword->count = $request->count;
                     $keywordsTable->save($keyword);
-                    $keywordLinkRequestsTable = TableRegistry::get('KeywordLinkRequests');
+                    
                     $keywordLinkRequest = $keywordLinkRequestsTable->newEntity([
                         'keyword_id' => $keyword->id,
                         'semantic_request_id' => $request->id,
+                        'count' => $request->count,
                         'percentage' => $value,
                         'created' => Time::now()
                     ]);
@@ -259,6 +272,7 @@ class SemanticRequestsController extends AppController {
                     $keywordLinkRequestsTable->save($keywordLinkRequest);
                 }
             } else {
+                $resp = array();
                 if (!empty($json['url'])) {
                     $resp['url'] = $json['url'];
                 }
@@ -294,8 +308,6 @@ class SemanticRequestsController extends AppController {
         } else {
             if ($req_response->getStatusCode() === '404') {
 
-                debug($req_response->body());
-
                 $pos = strpos($req_response->body(), ";mess=");
                 $error_number = substr($req_response->body(), 4, $pos - 4);
                 $error_message = substr($req_response->body(), 11);
@@ -312,4 +324,8 @@ class SemanticRequestsController extends AppController {
         return $this->redirect(['action' => 'view', $request->id]);
     }
 
+    
+
 }
+
+

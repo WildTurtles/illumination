@@ -71,10 +71,10 @@
     <table cellpadding="0" cellspacing="0">
         <thead>
             <tr>
+		<th scope="col"><?= $this->Paginator->sort('count') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('keyword_id') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('percentage') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('created', null, ['direction' => 'desc']) ?></th>
-                <th scope="col"><?= $this->Paginator->sort('updated') ?></th>
                 <th scope="col" class="actions"><?= __('Actions') ?></th>
             </tr>
         </thead>
@@ -82,12 +82,11 @@
             <?php foreach ($keywordLinkRequests as $keywordLinkRequest): ?>
             <tr>
               
-      
+		<td><?= $this->Number->format($keywordLinkRequest->count) ?></td>
                 <td><?= $keywordLinkRequest->has('keyword') ? $this->Html->link($keywordLinkRequest->keyword->name, ['controller' => 'Keywords', 'action' => 'view', $keywordLinkRequest->keyword->id]) : '' ?></td>
                
                 <td><?= $this->Number->format($keywordLinkRequest->percentage) ?></td>
                 <td><?= h($keywordLinkRequest->created) ?></td>
-                <td><?= h($keywordLinkRequest->updated) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['action' => 'view', $keywordLinkRequest->id]) ?>
                     <?= $this->Html->link(__('Edit'), ['action' => 'edit', $keywordLinkRequest->id]) ?>
@@ -131,6 +130,7 @@
                     <td><?= h($semanticResponse->created) ?></td>
                     <td class="actions">
                         <?= $this->Html->link(__('View'), ['controller' => 'SemanticResponses', 'action' => 'view', $semanticResponse->id]) ?>
+                        
                     </td>
                 </tr>
             <?php endforeach; ?>
