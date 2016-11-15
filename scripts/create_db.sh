@@ -49,6 +49,10 @@ psql -U $dbuser -d $dbname -f ./sql/create/notifications.sql
 #Request for command & http status code for doc http codes
 psql -U $dbuser -d $dbname -f ./sql/create/request_for_comments.sql
 psql -U $dbuser -d $dbname -f ./sql/create/http_status_codes.sql
+psql -U $dbuser -d $dbname -f ./sql/insert/request_forcomments.sql
+psql -U $dbuser -d $dbname -f ./sql/create/http_status_codes.sql
+
+
 
 psql -U $dbuser -d $dbname -f ./sql/create/semantic_cocoons.sql
 psql -U $dbuser -d $dbname -f ./sql/create/queue_elements.sql
