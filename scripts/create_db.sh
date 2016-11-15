@@ -1,4 +1,4 @@
-#!/bin/bash 
+#!/bin/bash
 
 dbuser=illumination
 dbname=illumination
@@ -20,7 +20,7 @@ psql -U $dbuser -d $dbname -f ./sql/insert/corpuses.sql
 # accounts for request
 psql -U $dbuser -d $dbname -f ./sql/create/accounts.sql
 
-#visiblis supported languages 
+#visiblis supported languages
 psql -U $dbuser -d $dbname -f ./sql/create/languages.sql
 psql -U $dbuser -d $dbname -f ./sql/insert/languages.sql
 
@@ -28,7 +28,7 @@ psql -U $dbuser -d $dbname -f ./sql/insert/languages.sql
 psql -U $dbuser -d $dbname -f ./sql/create/categories.sql
 psql -U $dbuser -d $dbname -f ./sql/insert/categories.sql
 
-#keyword send by the api 
+#keyword send by the api
 psql -U $dbuser -d $dbname -f ./sql/create/keywords.sql
 
 #the semantic request
