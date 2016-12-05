@@ -1,0 +1,5 @@
+#!/bin/bash
+
+dbuser=illumination
+dbname=illumination_test
+versionFile=./version.txt
