@@ -74,6 +74,9 @@ class SemanticCocoonResponsesTable extends Table
             ->integer('count')
             ->allowEmpty('count');
 
+        $validator
+            ->allowEmpty('token');
+
         return $validator;
     }
 

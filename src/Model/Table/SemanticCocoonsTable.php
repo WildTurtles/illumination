@@ -12,6 +12,7 @@ use Cake\Validation\Validator;
  * @property \Cake\ORM\Association\BelongsTo $Languages
  * @property \Cake\ORM\Association\BelongsTo $Corpuses
  * @property \Cake\ORM\Association\BelongsTo $Accounts
+ * @property \Cake\ORM\Association\BelongsTo $CocoonsCategories
  * @property \Cake\ORM\Association\HasMany $QueueElements
  * @property \Cake\ORM\Association\HasMany $SemanticCocoonResponses
  *
@@ -54,6 +55,10 @@ class SemanticCocoonsTable extends Table
         ]);
         $this->belongsTo('Accounts', [
             'foreignKey' => 'account_id',
+            'joinType' => 'INNER'
+        ]);
+        $this->belongsTo('CocoonsCategories', [
+            'foreignKey' => 'cocoons_category_id',
             'joinType' => 'INNER'
         ]);
         $this->hasMany('QueueElements', [
@@ -115,6 +120,7 @@ class SemanticCocoonsTable extends Table
         $rules->add($rules->existsIn(['language_id'], 'Languages'));
         $rules->add($rules->existsIn(['corpus_id'], 'Corpuses'));
         $rules->add($rules->existsIn(['account_id'], 'Accounts'));
+        $rules->add($rules->existsIn(['cocoons_category_id'], 'CocoonsCategories'));
 
         return $rules;
     }

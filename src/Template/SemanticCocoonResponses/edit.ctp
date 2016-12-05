@@ -25,6 +25,7 @@
             echo $this->Form->input('ended');
             echo $this->Form->input('count');
             echo $this->Form->input('semantic_cocoon_id', ['options' => $semanticCocoons]);
+            echo $this->Form->input('token');
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>

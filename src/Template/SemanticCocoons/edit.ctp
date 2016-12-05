@@ -35,6 +35,7 @@
             echo $this->Form->input('regular_expression');
             echo $this->Form->input('exclusive');
             echo $this->Form->input('account_id', ['options' => $accounts]);
+            echo $this->Form->input('cocoons_category_id');
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>

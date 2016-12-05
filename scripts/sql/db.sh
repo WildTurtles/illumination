@@ -1,7 +1,7 @@
 #!/bin/bash
 
-dbuser=illumination
-dbname=illumination
+create()
+{
 
 #users and groups
 psql -U $dbuser -d $dbname -f ./sql/create/groups_users.sql
@@ -48,14 +48,15 @@ psql -U $dbuser -d $dbname -f ./sql/create/notifications.sql
 
 #Request for command & http status code for doc http codes
 psql -U $dbuser -d $dbname -f ./sql/create/request_for_comments.sql
+psql -U $dbuser -d $dbname -f ./sql/insert/request_for_comments.sql
 psql -U $dbuser -d $dbname -f ./sql/create/http_status_codes.sql
-psql -U $dbuser -d $dbname -f ./sql/insert/request_forcomments.sql
-psql -U $dbuser -d $dbname -f ./sql/create/http_status_codes.sql
-
-
+psql -U $dbuser -d $dbname -f ./sql/insert/http_status_codes.sql
 
 psql -U $dbuser -d $dbname -f ./sql/create/semantic_cocoons.sql
 psql -U $dbuser -d $dbname -f ./sql/create/queue_elements.sql
 psql -U $dbuser -d $dbname -f ./sql/create/semantic_cocoon_responses.sql
 psql -U $dbuser -d $dbname -f ./sql/create/semantic_cocoon_links.sql
 psql -U $dbuser -d $dbname -f ./sql/create/semantic_cocoon_uniform_ressource_locators.sql
+
+#if new install (to do 0.2->0.3)
+}
