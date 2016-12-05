@@ -19,6 +19,7 @@ use Cake\ORM\Entity;
  * @property string $account_id
  * @property \Cake\I18n\Time $created
  * @property \Cake\I18n\Time $updated
+ * @property string $cocoons_category_id
  *
  * @property \App\Model\Entity\Language $language
  * @property \App\Model\Entity\Corpus $corpus

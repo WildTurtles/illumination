@@ -30,6 +30,7 @@
                 <th scope="col"><?= $this->Paginator->sort('account_id') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('created') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('updated') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('cocoons_category_id') ?></th>
                 <th scope="col" class="actions"><?= __('Actions') ?></th>
             </tr>
         </thead>
@@ -47,6 +48,7 @@
                 <td><?= $semanticCocoon->has('account') ? $this->Html->link($semanticCocoon->account->name, ['controller' => 'Accounts', 'action' => 'view', $semanticCocoon->account->id]) : '' ?></td>
                 <td><?= h($semanticCocoon->created) ?></td>
                 <td><?= h($semanticCocoon->updated) ?></td>
+                <td><?= h($semanticCocoon->cocoons_category_id) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['action' => 'view', $semanticCocoon->id]) ?>
                     <?= $this->Html->link(__('Edit'), ['action' => 'edit', $semanticCocoon->id]) ?>

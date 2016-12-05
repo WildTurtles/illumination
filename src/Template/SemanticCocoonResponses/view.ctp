@@ -25,6 +25,10 @@
             <td><?= $semanticCocoonResponse->has('semantic_cocoon') ? $this->Html->link($semanticCocoonResponse->semantic_cocoon->name, ['controller' => 'SemanticCocoons', 'action' => 'view', $semanticCocoonResponse->semantic_cocoon->id]) : '' ?></td>
         </tr>
         <tr>
+            <th scope="row"><?= __('Token') ?></th>
+            <td><?= h($semanticCocoonResponse->token) ?></td>
+        </tr>
+        <tr>
             <th scope="row"><?= __('Count') ?></th>
             <td><?= $this->Number->format($semanticCocoonResponse->count) ?></td>
         </tr>

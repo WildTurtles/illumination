@@ -1,13 +1,13 @@
 <?php
 namespace App\Test\TestCase\Controller;
 
-use App\Controller\SemanticCocoonsController;
+use App\Controller\CocoonsCategoriesController;
 use Cake\TestSuite\IntegrationTestCase;
 
 /**
- * App\Controller\SemanticCocoonsController Test Case
+ * App\Controller\CocoonsCategoriesController Test Case
  */
-class SemanticCocoonsControllerTest extends IntegrationTestCase
+class CocoonsCategoriesControllerTest extends IntegrationTestCase
 {
 
     /**
@@ -16,6 +16,7 @@ class SemanticCocoonsControllerTest extends IntegrationTestCase
      * @var array
      */
     public $fixtures = [
+        'app.cocoons_categories',
         'app.semantic_cocoons',
         'app.languages',
         'app.corpuses',

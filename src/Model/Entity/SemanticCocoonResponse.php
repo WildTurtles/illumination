@@ -11,6 +11,7 @@ use Cake\ORM\Entity;
  * @property \Cake\I18n\Time $ended
  * @property int $count
  * @property string $semantic_cocoon_id
+ * @property string $token
  *
  * @property \App\Model\Entity\SemanticCocoon $semantic_cocoon
  * @property \App\Model\Entity\SemanticCocoonLink[] $semantic_cocoon_links
@@ -31,5 +32,14 @@ class SemanticCocoonResponse extends Entity
     protected $_accessible = [
         '*' => true,
         'id' => false
+    ];
+
+    /**
+     * Fields that are excluded from JSON versions of the entity.
+     *
+     * @var array
+     */
+    protected $_hidden = [
+        'token'
     ];
 }

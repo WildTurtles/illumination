@@ -45,6 +45,10 @@
             <td><?= $semanticCocoon->has('account') ? $this->Html->link($semanticCocoon->account->name, ['controller' => 'Accounts', 'action' => 'view', $semanticCocoon->account->id]) : '' ?></td>
         </tr>
         <tr>
+            <th scope="row"><?= __('Cocoons Category Id') ?></th>
+            <td><?= h($semanticCocoon->cocoons_category_id) ?></td>
+        </tr>
+        <tr>
             <th scope="row"><?= __('Count') ?></th>
             <td><?= $this->Number->format($semanticCocoon->count) ?></td>
         </tr>
@@ -108,6 +112,7 @@
                 <th scope="col"><?= __('Ended') ?></th>
                 <th scope="col"><?= __('Count') ?></th>
                 <th scope="col"><?= __('Semantic Cocoon Id') ?></th>
+                <th scope="col"><?= __('Token') ?></th>
                 <th scope="col" class="actions"><?= __('Actions') ?></th>
             </tr>
             <?php foreach ($semanticCocoon->semantic_cocoon_responses as $semanticCocoonResponses): ?>
@@ -117,6 +122,7 @@
                 <td><?= h($semanticCocoonResponses->ended) ?></td>
                 <td><?= h($semanticCocoonResponses->count) ?></td>
                 <td><?= h($semanticCocoonResponses->semantic_cocoon_id) ?></td>
+                <td><?= h($semanticCocoonResponses->token) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['controller' => 'SemanticCocoonResponses', 'action' => 'view', $semanticCocoonResponses->id]) ?>
                     <?= $this->Html->link(__('Edit'), ['controller' => 'SemanticCocoonResponses', 'action' => 'edit', $semanticCocoonResponses->id]) ?>

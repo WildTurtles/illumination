@@ -23,7 +23,9 @@ class SemanticCocoonResponsesControllerTest extends IntegrationTestCase
         'app.accounts',
         'app.queue_elements',
         'app.semantic_cocoon_links',
-        'app.semantic_cocoon_uniform_ressource_locators'
+        'app.semantic_cocoon_uniform_ressource_locators',
+        'app.http_status_codes',
+        'app.request_for_comments'
     ];
 
     /**

@@ -1,22 +1,22 @@
 <?php
 namespace App\Test\TestCase\Model\Table;
 
-use App\Model\Table\SemanticCocoonResponsesTable;
+use App\Model\Table\CocoonsCategoriesTable;
 use Cake\ORM\TableRegistry;
 use Cake\TestSuite\TestCase;
 
 /**
- * App\Model\Table\SemanticCocoonResponsesTable Test Case
+ * App\Model\Table\CocoonsCategoriesTable Test Case
  */
-class SemanticCocoonResponsesTableTest extends TestCase
+class CocoonsCategoriesTableTest extends TestCase
 {
 
     /**
      * Test subject
      *
-     * @var \App\Model\Table\SemanticCocoonResponsesTable
+     * @var \App\Model\Table\CocoonsCategoriesTable
      */
-    public $SemanticCocoonResponses;
+    public $CocoonsCategories;
 
     /**
      * Fixtures
@@ -24,12 +24,13 @@ class SemanticCocoonResponsesTableTest extends TestCase
      * @var array
      */
     public $fixtures = [
-        'app.semantic_cocoon_responses',
+        'app.cocoons_categories',
         'app.semantic_cocoons',
         'app.languages',
         'app.corpuses',
         'app.accounts',
         'app.queue_elements',
+        'app.semantic_cocoon_responses',
         'app.semantic_cocoon_links',
         'app.semantic_cocoon_uniform_ressource_locators',
         'app.http_status_codes',
@@ -44,8 +45,8 @@ class SemanticCocoonResponsesTableTest extends TestCase
     public function setUp()
     {
         parent::setUp();
-        $config = TableRegistry::exists('SemanticCocoonResponses') ? [] : ['className' => 'App\Model\Table\SemanticCocoonResponsesTable'];
-        $this->SemanticCocoonResponses = TableRegistry::get('SemanticCocoonResponses', $config);
+        $config = TableRegistry::exists('CocoonsCategories') ? [] : ['className' => 'App\Model\Table\CocoonsCategoriesTable'];
+        $this->CocoonsCategories = TableRegistry::get('CocoonsCategories', $config);
     }
 
     /**
@@ -55,7 +56,7 @@ class SemanticCocoonResponsesTableTest extends TestCase
      */
     public function tearDown()
     {
-        unset($this->SemanticCocoonResponses);
+        unset($this->CocoonsCategories);
 
         parent::tearDown();
     }
@@ -76,16 +77,6 @@ class SemanticCocoonResponsesTableTest extends TestCase
      * @return void
      */
     public function testValidationDefault()
-    {
-        $this->markTestIncomplete('Not implemented yet.');
-    }
-
-    /**
-     * Test buildRules method
-     *
-     * @return void
-     */
-    public function testBuildRules()
     {
         $this->markTestIncomplete('Not implemented yet.');
     }

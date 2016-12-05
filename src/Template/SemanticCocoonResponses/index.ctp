@@ -20,6 +20,7 @@
                 <th scope="col"><?= $this->Paginator->sort('ended') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('count') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('semantic_cocoon_id') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('token') ?></th>
                 <th scope="col" class="actions"><?= __('Actions') ?></th>
             </tr>
         </thead>
@@ -31,6 +32,7 @@
                 <td><?= h($semanticCocoonResponse->ended) ?></td>
                 <td><?= $this->Number->format($semanticCocoonResponse->count) ?></td>
                 <td><?= $semanticCocoonResponse->has('semantic_cocoon') ? $this->Html->link($semanticCocoonResponse->semantic_cocoon->name, ['controller' => 'SemanticCocoons', 'action' => 'view', $semanticCocoonResponse->semantic_cocoon->id]) : '' ?></td>
+                <td><?= h($semanticCocoonResponse->token) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['action' => 'view', $semanticCocoonResponse->id]) ?>
                     <?= $this->Html->link(__('Edit'), ['action' => 'edit', $semanticCocoonResponse->id]) ?>
