@@ -8,6 +8,8 @@
         <li><?= $this->Html->link(__('New Corpus'), ['controller' => 'Corpuses', 'action' => 'add']) ?></li>
         <li><?= $this->Html->link(__('List Accounts'), ['controller' => 'Accounts', 'action' => 'index']) ?></li>
         <li><?= $this->Html->link(__('New Account'), ['controller' => 'Accounts', 'action' => 'add']) ?></li>
+        <li><?= $this->Html->link(__('List Cocoons Categories'), ['controller' => 'CocoonsCategories', 'action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('New Cocoons Category'), ['controller' => 'CocoonsCategories', 'action' => 'add']) ?></li>
         <li><?= $this->Html->link(__('List Queue Elements'), ['controller' => 'QueueElements', 'action' => 'index']) ?></li>
         <li><?= $this->Html->link(__('New Queue Element'), ['controller' => 'QueueElements', 'action' => 'add']) ?></li>
         <li><?= $this->Html->link(__('List Semantic Cocoon Responses'), ['controller' => 'SemanticCocoonResponses', 'action' => 'index']) ?></li>
@@ -28,8 +30,8 @@
             echo $this->Form->input('corpus_id', ['options' => $corpuses]);
             echo $this->Form->input('regular_expression');
             echo $this->Form->input('exclusive');
-            echo $this->Form->input('account_id', ['options' => $accounts]);
-            echo $this->Form->input('cocoons_category_id');
+            echo $this->Form->input('account_id', ['options' => $accounts, 'empty' => true]);
+            echo $this->Form->input('cocoons_category_id', ['options' => $cocoonsCategories]);
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>

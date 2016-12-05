@@ -35,11 +35,11 @@ class CocoonsCategoriesFixture extends TestFixture
      */
     public $records = [
         [
-            'id' => '728d1a36-1f33-40e5-960e-d685f81bc603',
+            'id' => '621349de-b7e9-4f79-b24f-57688c62e911',
             'name' => 'Lorem ipsum dolor sit amet',
             'description' => 'Lorem ipsum dolor sit amet, aliquet feugiat. Convallis morbi fringilla gravida, phasellus feugiat dapibus velit nunc, pulvinar eget sollicitudin venenatis cum nullam, vivamus ut a sed, mollitia lectus. Nulla vestibulum massa neque ut et, id hendrerit sit, feugiat in taciti enim proin nibh, tempor dignissim, rhoncus duis vestibulum nunc mattis convallis.',
-            'created' => 1480948383,
-            'updated' => 1480948383
+            'created' => 1480951417,
+            'updated' => 1480951417
         ],
     ];
 }

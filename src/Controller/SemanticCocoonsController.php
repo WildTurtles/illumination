@@ -19,7 +19,7 @@ class SemanticCocoonsController extends AppController
     public function index()
     {
         $this->paginate = [
-            'contain' => ['Languages', 'Corpuses', 'Accounts']
+            'contain' => ['Languages', 'Corpuses', 'Accounts', 'CocoonsCategories']
         ];
         $semanticCocoons = $this->paginate($this->SemanticCocoons);
 
@@ -37,7 +37,7 @@ class SemanticCocoonsController extends AppController
     public function view($id = null)
     {
         $semanticCocoon = $this->SemanticCocoons->get($id, [
-            'contain' => ['Languages', 'Corpuses', 'Accounts', 'QueueElements', 'SemanticCocoonResponses']
+            'contain' => ['Languages', 'Corpuses', 'Accounts', 'CocoonsCategories', 'QueueElements', 'SemanticCocoonResponses']
         ]);
 
         $this->set('semanticCocoon', $semanticCocoon);
@@ -65,7 +65,8 @@ class SemanticCocoonsController extends AppController
         $languages = $this->SemanticCocoons->Languages->find('list', ['limit' => 200]);
         $corpuses = $this->SemanticCocoons->Corpuses->find('list', ['limit' => 200]);
         $accounts = $this->SemanticCocoons->Accounts->find('list', ['limit' => 200]);
-        $this->set(compact('semanticCocoon', 'languages', 'corpuses', 'accounts'));
+        $cocoonsCategories = $this->SemanticCocoons->CocoonsCategories->find('list', ['limit' => 200]);
+        $this->set(compact('semanticCocoon', 'languages', 'corpuses', 'accounts', 'cocoonsCategories'));
         $this->set('_serialize', ['semanticCocoon']);
     }
 
@@ -94,7 +95,8 @@ class SemanticCocoonsController extends AppController
         $languages = $this->SemanticCocoons->Languages->find('list', ['limit' => 200]);
         $corpuses = $this->SemanticCocoons->Corpuses->find('list', ['limit' => 200]);
         $accounts = $this->SemanticCocoons->Accounts->find('list', ['limit' => 200]);
-        $this->set(compact('semanticCocoon', 'languages', 'corpuses', 'accounts'));
+        $cocoonsCategories = $this->SemanticCocoons->CocoonsCategories->find('list', ['limit' => 200]);
+        $this->set(compact('semanticCocoon', 'languages', 'corpuses', 'accounts', 'cocoonsCategories'));
         $this->set('_serialize', ['semanticCocoon']);
     }
 

@@ -10,7 +10,7 @@ CREATE TABLE semantic_cocoons (
   corpus_id           uuid NOT NULL,
   regular_expression  varchar(255),
   exclusive           bool,
-  account_id          uuid NOT NULL,
+  account_id          uuid,
   created             timestamp,
   updated             timestamp,
   PRIMARY KEY (id));

@@ -11,6 +11,8 @@
         <li><?= $this->Html->link(__('New Corpus'), ['controller' => 'Corpuses', 'action' => 'add']) ?> </li>
         <li><?= $this->Html->link(__('List Accounts'), ['controller' => 'Accounts', 'action' => 'index']) ?> </li>
         <li><?= $this->Html->link(__('New Account'), ['controller' => 'Accounts', 'action' => 'add']) ?> </li>
+        <li><?= $this->Html->link(__('List Cocoons Categories'), ['controller' => 'CocoonsCategories', 'action' => 'index']) ?> </li>
+        <li><?= $this->Html->link(__('New Cocoons Category'), ['controller' => 'CocoonsCategories', 'action' => 'add']) ?> </li>
         <li><?= $this->Html->link(__('List Queue Elements'), ['controller' => 'QueueElements', 'action' => 'index']) ?> </li>
         <li><?= $this->Html->link(__('New Queue Element'), ['controller' => 'QueueElements', 'action' => 'add']) ?> </li>
         <li><?= $this->Html->link(__('List Semantic Cocoon Responses'), ['controller' => 'SemanticCocoonResponses', 'action' => 'index']) ?> </li>
@@ -45,8 +47,8 @@
             <td><?= $semanticCocoon->has('account') ? $this->Html->link($semanticCocoon->account->name, ['controller' => 'Accounts', 'action' => 'view', $semanticCocoon->account->id]) : '' ?></td>
         </tr>
         <tr>
-            <th scope="row"><?= __('Cocoons Category Id') ?></th>
-            <td><?= h($semanticCocoon->cocoons_category_id) ?></td>
+            <th scope="row"><?= __('Cocoons Category') ?></th>
+            <td><?= $semanticCocoon->has('cocoons_category') ? $this->Html->link($semanticCocoon->cocoons_category->name, ['controller' => 'CocoonsCategories', 'action' => 'view', $semanticCocoon->cocoons_category->id]) : '' ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('Count') ?></th>

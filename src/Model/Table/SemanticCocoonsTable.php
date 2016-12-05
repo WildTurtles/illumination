@@ -54,8 +54,7 @@ class SemanticCocoonsTable extends Table
             'joinType' => 'INNER'
         ]);
         $this->belongsTo('Accounts', [
-            'foreignKey' => 'account_id',
-            'joinType' => 'INNER'
+            'foreignKey' => 'account_id'
         ]);
         $this->belongsTo('CocoonsCategories', [
             'foreignKey' => 'cocoons_category_id',

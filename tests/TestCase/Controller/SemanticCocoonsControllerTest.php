@@ -20,6 +20,7 @@ class SemanticCocoonsControllerTest extends IntegrationTestCase
         'app.languages',
         'app.corpuses',
         'app.accounts',
+        'app.cocoons_categories',
         'app.queue_elements',
         'app.semantic_cocoon_responses',
         'app.semantic_cocoon_links',

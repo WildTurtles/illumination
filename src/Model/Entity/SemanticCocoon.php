@@ -24,6 +24,7 @@ use Cake\ORM\Entity;
  * @property \App\Model\Entity\Language $language
  * @property \App\Model\Entity\Corpus $corpus
  * @property \App\Model\Entity\Account $account
+ * @property \App\Model\Entity\CocoonsCategory $cocoons_category
  * @property \App\Model\Entity\QueueElement[] $queue_elements
  * @property \App\Model\Entity\SemanticCocoonResponse[] $semantic_cocoon_responses
  */
