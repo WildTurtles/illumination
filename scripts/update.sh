@@ -6,7 +6,7 @@ code=$1
 
   case $code in
        1)
-         echo ""
+         echo "error 1"
 	;;
        2)
          echo ""
@@ -41,7 +41,8 @@ newVersion=0.3.0
 
 source configuration
 
-if [ -f ${versionFile} ] then
+if [ -f ${versionFile} ]
+then
   currentVersion=$(head -n 1 ${versionFile})
 else
   currentVersion=0.0.0
@@ -53,8 +54,7 @@ echo $currentVersion
 again=true
 while $again
 do
-  then
-    case $currentVersion in
+   case $currentVersion in
       0.0.0)
         updateFile="${updateBasePath}${currentVersion}/${dbFileName}"
         if [ -f ${updateFile} ]
@@ -62,7 +62,8 @@ do
           source $updateFile
           #update $dbuser $dbname
           again=false
-        then
+        else
+          again=false
           code=1
         fi
         ;;
@@ -74,7 +75,7 @@ do
           source $updateFile
           #update $dbuser $dbname
           again=false
-        then
+        else
           code=1
         fi
         ;;

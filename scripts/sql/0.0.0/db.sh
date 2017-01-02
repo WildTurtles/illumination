@@ -5,11 +5,14 @@ create()
 
 crte=./create/
 isrt=./insert/
+dbuser=visillu
+dbname=visillu
 
 #users and groups
 psql -U $dbuser -d $dbname -f ${crte}groups.sql
 psql -U $dbuser -d $dbname -f ${crte}users.sql
 psql -U $dbuser -d $dbname -f ${crte}groups_users.sql
+#psql -U $dbuser -d $dbname -f ${insert}admin.sql
 
 # app configuration
 psql -U $dbuser -d $dbname -f ${crte}configurations.sql
@@ -57,6 +60,9 @@ psql -U $dbuser -d $dbname -f ${isrt}request_for_comments.sql
 psql -U $dbuser -d $dbname -f ${crte}http_status_codes.sql
 psql -U $dbuser -d $dbname -f ${isrt}http_status_codes.sql
 
+psql -U $dbuser -d $dbname -f ${crte}cocoon_categories.sql
+psql -U $dbuser -d $dbname -f ${isrt}cocoon_categories.sql
+
 psql -U $dbuser -d $dbname -f ${crte}semantic_cocoons.sql
 psql -U $dbuser -d $dbname -f ${crte}queue_elements.sql
 psql -U $dbuser -d $dbname -f ${crte}semantic_cocoon_responses.sql
@@ -65,3 +71,5 @@ psql -U $dbuser -d $dbname -f ${crte}semantic_cocoon_uniform_ressource_locators.
 
 #if new install (to do 0.2->0.3)
 }
+
+create
