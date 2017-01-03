@@ -1,13 +1,13 @@
 <?php
 namespace App\Test\TestCase\Controller;
 
-use App\Controller\SemanticCocoonUniformRessourceLocatorsController;
+use App\Controller\SemanticCocoonUrlsController;
 use Cake\TestSuite\IntegrationTestCase;
 
 /**
- * App\Controller\SemanticCocoonUniformRessourceLocatorsController Test Case
+ * App\Controller\SemanticCocoonUrlsController Test Case
  */
-class SemanticCocoonUniformRessourceLocatorsControllerTest extends IntegrationTestCase
+class SemanticCocoonUrlsControllerTest extends IntegrationTestCase
 {
 
     /**
@@ -16,7 +16,7 @@ class SemanticCocoonUniformRessourceLocatorsControllerTest extends IntegrationTe
      * @var array
      */
     public $fixtures = [
-        'app.semantic_cocoon_uniform_ressource_locators',
+        'app.semantic_cocoon_urls',
         'app.http_status_codes',
         'app.request_for_comments',
         'app.semantic_cocoon_responses',
@@ -24,8 +24,10 @@ class SemanticCocoonUniformRessourceLocatorsControllerTest extends IntegrationTe
         'app.languages',
         'app.corpuses',
         'app.accounts',
+        'app.cocoons_categories',
         'app.queue_elements',
-        'app.semantic_cocoon_links'
+        'app.semantic_cocoon_links',
+        'app.semantic_cocoon_uniform_ressource_locators'
     ];
 
     /**

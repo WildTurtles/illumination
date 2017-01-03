@@ -1,22 +1,22 @@
 <?php
 namespace App\Test\TestCase\Model\Table;
 
-use App\Model\Table\SemanticCocoonUniformRessourceLocatorsTable;
+use App\Model\Table\SemanticCocoonUrlsTable;
 use Cake\ORM\TableRegistry;
 use Cake\TestSuite\TestCase;
 
 /**
- * App\Model\Table\SemanticCocoonUniformRessourceLocatorsTable Test Case
+ * App\Model\Table\SemanticCocoonUrlsTable Test Case
  */
-class SemanticCocoonUniformRessourceLocatorsTableTest extends TestCase
+class SemanticCocoonUrlsTableTest extends TestCase
 {
 
     /**
      * Test subject
      *
-     * @var \App\Model\Table\SemanticCocoonUniformRessourceLocatorsTable
+     * @var \App\Model\Table\SemanticCocoonUrlsTable
      */
-    public $SemanticCocoonUniformRessourceLocators;
+    public $SemanticCocoonUrls;
 
     /**
      * Fixtures
@@ -24,7 +24,7 @@ class SemanticCocoonUniformRessourceLocatorsTableTest extends TestCase
      * @var array
      */
     public $fixtures = [
-        'app.semantic_cocoon_uniform_ressource_locators',
+        'app.semantic_cocoon_urls',
         'app.http_status_codes',
         'app.request_for_comments',
         'app.semantic_cocoon_responses',
@@ -32,8 +32,10 @@ class SemanticCocoonUniformRessourceLocatorsTableTest extends TestCase
         'app.languages',
         'app.corpuses',
         'app.accounts',
+        'app.cocoons_categories',
         'app.queue_elements',
-        'app.semantic_cocoon_links'
+        'app.semantic_cocoon_links',
+        'app.semantic_cocoon_uniform_ressource_locators'
     ];
 
     /**
@@ -44,8 +46,8 @@ class SemanticCocoonUniformRessourceLocatorsTableTest extends TestCase
     public function setUp()
     {
         parent::setUp();
-        $config = TableRegistry::exists('SemanticCocoonUniformRessourceLocators') ? [] : ['className' => 'App\Model\Table\SemanticCocoonUniformRessourceLocatorsTable'];
-        $this->SemanticCocoonUniformRessourceLocators = TableRegistry::get('SemanticCocoonUniformRessourceLocators', $config);
+        $config = TableRegistry::exists('SemanticCocoonUrls') ? [] : ['className' => 'App\Model\Table\SemanticCocoonUrlsTable'];
+        $this->SemanticCocoonUrls = TableRegistry::get('SemanticCocoonUrls', $config);
     }
 
     /**
@@ -55,7 +57,7 @@ class SemanticCocoonUniformRessourceLocatorsTableTest extends TestCase
      */
     public function tearDown()
     {
-        unset($this->SemanticCocoonUniformRessourceLocators);
+        unset($this->SemanticCocoonUrls);
 
         parent::tearDown();
     }

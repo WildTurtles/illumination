@@ -1,4 +1,4 @@
-CREATE TABLE semantic_cocoon_uniform_ressource_locators (
+CREATE TABLE semantic_cocoon_urls (
   id                          uuid NOT NULL,
   id_url_visiblis             int8,
   url                         text,
@@ -12,5 +12,5 @@ CREATE TABLE semantic_cocoon_uniform_ressource_locators (
   created                     timestamp,
   updated                     timestamp,
   PRIMARY KEY (id));
-ALTER TABLE semantic_cocoon_uniform_ressource_locators ADD CONSTRAINT FKsemantic_c624354 FOREIGN KEY (http_status_code_id) REFERENCES http_status_codes (id);
-ALTER TABLE semantic_cocoon_uniform_ressource_locators ADD CONSTRAINT FKsemantic_c639501 FOREIGN KEY (semantic_cocoon_response_id) REFERENCES semantic_cocoon_responses (id);
+ALTER TABLE semantic_cocoon_urls ADD CONSTRAINT FKsemantic_c624354 FOREIGN KEY (http_status_code_id) REFERENCES http_status_codes (id);
+ALTER TABLE semantic_cocoon_urls ADD CONSTRAINT FKsemantic_c639501 FOREIGN KEY (semantic_cocoon_response_id) REFERENCES semantic_cocoon_responses (id);

@@ -5,8 +5,6 @@ create()
 
 crte=./create/
 isrt=./insert/
-dbuser=visillu
-dbname=visillu
 
 #users and groups
 psql -U $dbuser -d $dbname -f ${crte}groups.sql
@@ -68,6 +66,7 @@ psql -U $dbuser -d $dbname -f ${crte}queue_elements.sql
 psql -U $dbuser -d $dbname -f ${crte}semantic_cocoon_responses.sql
 psql -U $dbuser -d $dbname -f ${crte}semantic_cocoon_links.sql
 psql -U $dbuser -d $dbname -f ${crte}semantic_cocoon_uniform_ressource_locators.sql
+
 
 #if new install (to do 0.2->0.3)
 }

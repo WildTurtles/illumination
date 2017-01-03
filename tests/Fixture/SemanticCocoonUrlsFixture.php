@@ -4,10 +4,10 @@ namespace App\Test\Fixture;
 use Cake\TestSuite\Fixture\TestFixture;
 
 /**
- * SemanticCocoonUniformRessourceLocatorsFixture
+ * SemanticCocoonUrlsFixture
  *
  */
-class SemanticCocoonUniformRessourceLocatorsFixture extends TestFixture
+class SemanticCocoonUrlsFixture extends TestFixture
 {
 
     /**
@@ -44,7 +44,7 @@ class SemanticCocoonUniformRessourceLocatorsFixture extends TestFixture
      */
     public $records = [
         [
-            'id' => 'bc2d1f2a-8356-4310-a6ff-c4334ae80ea5',
+            'id' => '3ffcfedd-4dd9-42fa-9a8c-0589836cf813',
             'id_url_visiblis' => 1,
             'url' => 'Lorem ipsum dolor sit amet, aliquet feugiat. Convallis morbi fringilla gravida, phasellus feugiat dapibus velit nunc, pulvinar eget sollicitudin venenatis cum nullam, vivamus ut a sed, mollitia lectus. Nulla vestibulum massa neque ut et, id hendrerit sit, feugiat in taciti enim proin nibh, tempor dignissim, rhoncus duis vestibulum nunc mattis convallis.',
             'as_title' => 1.5,
@@ -52,10 +52,10 @@ class SemanticCocoonUniformRessourceLocatorsFixture extends TestFixture
             'title_semantic_rank' => 1.5,
             'page_semantic_rank' => 1.5,
             'page_rank' => 1.5,
-            'http_status_code_id' => '047760ba-663d-4226-83fe-7a0840d73f3c',
-            'semantic_cocoon_response_id' => '19eca341-bb1a-4cf9-a229-d0d7f28cf76d',
-            'created' => 1478965216,
-            'updated' => 1478965216
+            'http_status_code_id' => 'c77bda3b-67ba-405e-85ec-179503f8430d',
+            'semantic_cocoon_response_id' => 'c5bd66d6-e99b-49e0-b8c0-c52aab271935',
+            'created' => 1483440527,
+            'updated' => 1483440527
         ],
     ];
 }

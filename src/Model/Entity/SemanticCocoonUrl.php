@@ -4,7 +4,7 @@ namespace App\Model\Entity;
 use Cake\ORM\Entity;
 
 /**
- * SemanticCocoonUniformRessourceLocator Entity
+ * SemanticCocoonUrl Entity
  *
  * @property string $id
  * @property int $id_url_visiblis
@@ -22,7 +22,7 @@ use Cake\ORM\Entity;
  * @property \App\Model\Entity\HttpStatusCode $http_status_code
  * @property \App\Model\Entity\SemanticCocoonResponse $semantic_cocoon_response
  */
-class SemanticCocoonUniformRessourceLocator extends Entity
+class SemanticCocoonUrl extends Entity
 {
 
     /**

@@ -7,22 +7,22 @@ use Cake\ORM\Table;
 use Cake\Validation\Validator;
 
 /**
- * SemanticCocoonUniformRessourceLocators Model
+ * SemanticCocoonUrls Model
  *
  * @property \Cake\ORM\Association\BelongsTo $HttpStatusCodes
  * @property \Cake\ORM\Association\BelongsTo $SemanticCocoonResponses
  *
- * @method \App\Model\Entity\SemanticCocoonUniformRessourceLocator get($primaryKey, $options = [])
- * @method \App\Model\Entity\SemanticCocoonUniformRessourceLocator newEntity($data = null, array $options = [])
- * @method \App\Model\Entity\SemanticCocoonUniformRessourceLocator[] newEntities(array $data, array $options = [])
- * @method \App\Model\Entity\SemanticCocoonUniformRessourceLocator|bool save(\Cake\Datasource\EntityInterface $entity, $options = [])
- * @method \App\Model\Entity\SemanticCocoonUniformRessourceLocator patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
- * @method \App\Model\Entity\SemanticCocoonUniformRessourceLocator[] patchEntities($entities, array $data, array $options = [])
- * @method \App\Model\Entity\SemanticCocoonUniformRessourceLocator findOrCreate($search, callable $callback = null)
+ * @method \App\Model\Entity\SemanticCocoonUrl get($primaryKey, $options = [])
+ * @method \App\Model\Entity\SemanticCocoonUrl newEntity($data = null, array $options = [])
+ * @method \App\Model\Entity\SemanticCocoonUrl[] newEntities(array $data, array $options = [])
+ * @method \App\Model\Entity\SemanticCocoonUrl|bool save(\Cake\Datasource\EntityInterface $entity, $options = [])
+ * @method \App\Model\Entity\SemanticCocoonUrl patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
+ * @method \App\Model\Entity\SemanticCocoonUrl[] patchEntities($entities, array $data, array $options = [])
+ * @method \App\Model\Entity\SemanticCocoonUrl findOrCreate($search, callable $callback = null)
  *
  * @mixin \Cake\ORM\Behavior\TimestampBehavior
  */
-class SemanticCocoonUniformRessourceLocatorsTable extends Table
+class SemanticCocoonUrlsTable extends Table
 {
 
     /**
@@ -35,7 +35,7 @@ class SemanticCocoonUniformRessourceLocatorsTable extends Table
     {
         parent::initialize($config);
 
-        $this->table('semantic_cocoon_uniform_ressource_locators');
+        $this->table('semantic_cocoon_urls');
         $this->displayField('id');
         $this->primaryKey('id');
 

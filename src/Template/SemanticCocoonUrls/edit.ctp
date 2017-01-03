@@ -1,17 +1,23 @@
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
         <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('List Semantic Cocoon Uniform Ressource Locators'), ['action' => 'index']) ?></li>
+        <li><?= $this->Form->postLink(
+                __('Delete'),
+                ['action' => 'delete', $semanticCocoonUrl->id],
+                ['confirm' => __('Are you sure you want to delete # {0}?', $semanticCocoonUrl->id)]
+            )
+        ?></li>
+        <li><?= $this->Html->link(__('List Semantic Cocoon Urls'), ['action' => 'index']) ?></li>
         <li><?= $this->Html->link(__('List Http Status Codes'), ['controller' => 'HttpStatusCodes', 'action' => 'index']) ?></li>
         <li><?= $this->Html->link(__('New Http Status Code'), ['controller' => 'HttpStatusCodes', 'action' => 'add']) ?></li>
         <li><?= $this->Html->link(__('List Semantic Cocoon Responses'), ['controller' => 'SemanticCocoonResponses', 'action' => 'index']) ?></li>
         <li><?= $this->Html->link(__('New Semantic Cocoon Response'), ['controller' => 'SemanticCocoonResponses', 'action' => 'add']) ?></li>
     </ul>
 </nav>
-<div class="semanticCocoonUniformRessourceLocators form large-9 medium-8 columns content">
-    <?= $this->Form->create($semanticCocoonUniformRessourceLocator) ?>
+<div class="semanticCocoonUrls form large-9 medium-8 columns content">
+    <?= $this->Form->create($semanticCocoonUrl) ?>
     <fieldset>
-        <legend><?= __('Add Semantic Cocoon Uniform Ressource Locator') ?></legend>
+        <legend><?= __('Edit Semantic Cocoon Url') ?></legend>
         <?php
             echo $this->Form->input('id_url_visiblis');
             echo $this->Form->input('url');
