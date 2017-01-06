@@ -7,21 +7,28 @@ use Cake\ORM\Table;
 use Cake\Validation\Validator;
 
 /**
- * CocoonsCategories Model
+ * CocoonCategories Model
  *
  * @property \Cake\ORM\Association\HasMany $SemanticCocoons
  *
- * @method \App\Model\Entity\CocoonsCategory get($primaryKey, $options = [])
- * @method \App\Model\Entity\CocoonsCategory newEntity($data = null, array $options = [])
- * @method \App\Model\Entity\CocoonsCategory[] newEntities(array $data, array $options = [])
- * @method \App\Model\Entity\CocoonsCategory|bool save(\Cake\Datasource\EntityInterface $entity, $options = [])
- * @method \App\Model\Entity\CocoonsCategory patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
- * @method \App\Model\Entity\CocoonsCategory[] patchEntities($entities, array $data, array $options = [])
- * @method \App\Model\Entity\CocoonsCategory findOrCreate($search, callable $callback = null)
+ * @method \App\Model\Entity\CocoonCategory get($primaryKey, $options = [])
+ * @method \App\Model\Entity\CocoonCategory newEntity($data = null, array 
+$options = [])
+ * @method \App\Model\Entity\CocoonCategory[] newEntities(array $data, array 
+$options = [])
+ * @method \App\Model\Entity\CocoonCategory|bool 
+save(\Cake\Datasource\EntityInterface $entity, $options = [])
+ * @method \App\Model\Entity\CocoonCategory 
+patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array 
+$options = [])
+ * @method \App\Model\Entity\CocoonCategory[] patchEntities($entities, array 
+$data, array $options = [])
+ * @method \App\Model\Entity\CocoonCategory findOrCreate($search, callable 
+$callback = null)
  *
  * @mixin \Cake\ORM\Behavior\TimestampBehavior
  */
-class CocoonsCategoriesTable extends Table
+class CocoonCategoriesTable extends Table
 {
 
     /**
@@ -34,14 +41,14 @@ class CocoonsCategoriesTable extends Table
     {
         parent::initialize($config);
 
-        $this->table('cocoons_categories');
+        $this->table('cocoon_categories');
         $this->displayField('name');
         $this->primaryKey('id');
 
         $this->addBehavior('Timestamp');
 
         $this->hasMany('SemanticCocoons', [
-            'foreignKey' => 'cocoons_category_id'
+            'foreignKey' => 'cocoon_category_id'
         ]);
     }
 

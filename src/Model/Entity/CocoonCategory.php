@@ -4,7 +4,7 @@ namespace App\Model\Entity;
 use Cake\ORM\Entity;
 
 /**
- * CocoonsCategory Entity
+ * CocoonCategory Entity
  *
  * @property string $id
  * @property string $name
@@ -14,7 +14,7 @@ use Cake\ORM\Entity;
  *
  * @property \App\Model\Entity\SemanticCocoon[] $semantic_cocoons
  */
-class CocoonsCategory extends Entity
+class CocoonCategory extends Entity
 {
 
     /**

@@ -6,9 +6,9 @@ use App\Controller\AppController;
 /**
  * CocoonsCategories Controller
  *
- * @property \App\Model\Table\CocoonsCategoriesTable $CocoonsCategories
+ * @property \App\Model\Table\CocoonsCategoriesTable $CocoonCategories
  */
-class CocoonsCategoriesController extends AppController
+class CocoonCategoriesController extends AppController
 {
 
     /**
@@ -18,27 +18,27 @@ class CocoonsCategoriesController extends AppController
      */
     public function index()
     {
-        $cocoonsCategories = $this->paginate($this->CocoonsCategories);
+        $cocoonCategories = $this->paginate($this->CocoonCategories);
 
-        $this->set(compact('cocoonsCategories'));
-        $this->set('_serialize', ['cocoonsCategories']);
+        $this->set(compact('cocoonCategories'));
+        $this->set('_serialize', ['cocoonCategories']);
     }
 
     /**
      * View method
      *
-     * @param string|null $id Cocoons Category id.
+     * @param string|null $id Cocoon Category id.
      * @return \Cake\Network\Response|null
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
     public function view($id = null)
     {
-        $cocoonsCategory = $this->CocoonsCategories->get($id, [
+        $cocoonCategory = $this->CocoonCategories->get($id, [
             'contain' => ['SemanticCocoons']
         ]);
 
-        $this->set('cocoonsCategory', $cocoonsCategory);
-        $this->set('_serialize', ['cocoonsCategory']);
+        $this->set('cocoonCategory', $cocoonCategory);
+        $this->set('_serialize', ['cocoonCategory']);
     }
 
     /**
@@ -48,10 +48,11 @@ class CocoonsCategoriesController extends AppController
      */
     public function add()
     {
-        $cocoonsCategory = $this->CocoonsCategories->newEntity();
+        $cocoonCategory = $this->CocoonCategories->newEntity();
         if ($this->request->is('post')) {
-            $cocoonsCategory = $this->CocoonsCategories->patchEntity($cocoonsCategory, $this->request->data);
-            if ($this->CocoonsCategories->save($cocoonsCategory)) {
+            $cocoonCategory = 
+$this->CocoonCategories->patchEntity($cocoonCategory, $this->request->data);
+            if ($this->CocoonCategories->save($cocoonCategory)) {
                 $this->Flash->success(__('The cocoons category has been saved.'));
 
                 return $this->redirect(['action' => 'index']);
@@ -59,8 +60,8 @@ class CocoonsCategoriesController extends AppController
                 $this->Flash->error(__('The cocoons category could not be saved. Please, try again.'));
             }
         }
-        $this->set(compact('cocoonsCategory'));
-        $this->set('_serialize', ['cocoonsCategory']);
+        $this->set(compact('cocoonCategory'));
+        $this->set('_serialize', ['cocoonCategory']);
     }
 
     /**
@@ -72,12 +73,13 @@ class CocoonsCategoriesController extends AppController
      */
     public function edit($id = null)
     {
-        $cocoonsCategory = $this->CocoonsCategories->get($id, [
+        $cocoonCategory = $this->CocoonCategories->get($id, [
             'contain' => []
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
-            $cocoonsCategory = $this->CocoonsCategories->patchEntity($cocoonsCategory, $this->request->data);
-            if ($this->CocoonsCategories->save($cocoonsCategory)) {
+            $cocoonCategory = 
+$this->CocoonsCategories->patchEntity($cocoonCategory, $this->request->data);
+            if ($this->CocoonCategories->save($cocoonCategory)) {
                 $this->Flash->success(__('The cocoons category has been saved.'));
 
                 return $this->redirect(['action' => 'index']);
@@ -85,8 +87,8 @@ class CocoonsCategoriesController extends AppController
                 $this->Flash->error(__('The cocoons category could not be saved. Please, try again.'));
             }
         }
-        $this->set(compact('cocoonsCategory'));
-        $this->set('_serialize', ['cocoonsCategory']);
+        $this->set(compact('cocoonCategory'));
+        $this->set('_serialize', ['cocoonCategory']);
     }
 
     /**
@@ -99,8 +101,8 @@ class CocoonsCategoriesController extends AppController
     public function delete($id = null)
     {
         $this->request->allowMethod(['post', 'delete']);
-        $cocoonsCategory = $this->CocoonsCategories->get($id);
-        if ($this->CocoonsCategories->delete($cocoonsCategory)) {
+        $cocoonCategory = $this->CocoonCategories->get($id);
+        if ($this->CocoonCategories->delete($cocoonCategory)) {
             $this->Flash->success(__('The cocoons category has been deleted.'));
         } else {
             $this->Flash->error(__('The cocoons category could not be deleted. Please, try again.'));

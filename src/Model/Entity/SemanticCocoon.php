@@ -19,12 +19,12 @@ use Cake\ORM\Entity;
  * @property string $account_id
  * @property \Cake\I18n\Time $created
  * @property \Cake\I18n\Time $updated
- * @property string $cocoons_category_id
+ * @property string $cocoon_category_id
  *
  * @property \App\Model\Entity\Language $language
  * @property \App\Model\Entity\Corpus $corpus
  * @property \App\Model\Entity\Account $account
- * @property \App\Model\Entity\CocoonsCategory $cocoons_category
+ * @property \App\Model\Entity\CocoonCategory $cocoon_category
  * @property \App\Model\Entity\QueueElement[] $queue_elements
  * @property \App\Model\Entity\SemanticCocoonResponse[] $semantic_cocoon_responses
  */

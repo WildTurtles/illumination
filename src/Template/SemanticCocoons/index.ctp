@@ -53,6 +53,7 @@
                 <td><?= $semanticCocoon->has('cocoons_category') ? $this->Html->link($semanticCocoon->cocoons_category->name, ['controller' => 'CocoonsCategories', 'action' => 'view', $semanticCocoon->cocoons_category->id]) : '' ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['action' => 'view', $semanticCocoon->id]) ?>
+                    <?= $this->Html->link(__('Execute'), ['action' => 'cocoon', $semanticCocoon->id]) ?>
                     <?= $this->Html->link(__('Edit'), ['action' => 'edit', $semanticCocoon->id]) ?>
                     <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $semanticCocoon->id], ['confirm' => __('Are you sure you want to delete # {0}?', $semanticCocoon->id)]) ?>
                 </td>
