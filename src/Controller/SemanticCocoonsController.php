@@ -328,25 +328,8 @@ $this->SemanticCocoons->CocoonCategories->find('list', ['limit' => 200]);
 	// 				debug($semanticCocoonUniformRessourceLocators);exit();
 	// 			
 			}
-	// 		$this->set('test', $test);
 			
-	// 		debug($semanticCocoonResponses);exit();
-			
-			
-			/////////////////////////////A MODIFIER 
-			$semanticCocoonUrlsTable = TableRegistry::get('SemanticCocoonUrls');
-			$semanticCocoonUrls = $semanticCocoonUrlsTable
-				->find()
-				->where(['semantic_cocoon_response_id' => $result->id])
-				->all();
-			
-			$this->set('semanticCocoonUrls', $semanticCocoonUrls);
-			
-			///////////////////////////////// FIN A MODIFIER 
-			
-	// 			Log::write(LOG_ERR, $json);
-	// 			debug ($json);
-	// 			exit();
+			return $this->redirect(['controller' => 'SemanticCocoonResponses', 'action' => 'view', $result->id]);
 		}else {
 			if ($req_response->getStatusCode() === '404') {
 

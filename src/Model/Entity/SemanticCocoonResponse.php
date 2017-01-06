@@ -15,7 +15,7 @@ use Cake\ORM\Entity;
  *
  * @property \App\Model\Entity\SemanticCocoon $semantic_cocoon
  * @property \App\Model\Entity\SemanticCocoonLink[] $semantic_cocoon_links
- * @property \App\Model\Entity\SemanticCocoonUniformRessourceLocator[] $semantic_cocoon_uniform_ressource_locators
+ * @property \App\Model\Entity\SemanticCocoonUrls[] $semantic_cocoon_urls
  */
 class SemanticCocoonResponse extends Entity
 {

@@ -45,7 +45,7 @@ class SemanticCocoonResponsesTable extends Table
         $this->hasMany('SemanticCocoonLinks', [
             'foreignKey' => 'semantic_cocoon_response_id'
         ]);
-        $this->hasMany('SemanticCocoonUniformRessourceLocators', [
+        $this->hasMany('SemanticCocoonUrls', [
             'foreignKey' => 'semantic_cocoon_response_id'
         ]);
     }

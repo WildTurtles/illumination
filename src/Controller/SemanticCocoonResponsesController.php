@@ -37,7 +37,7 @@ class SemanticCocoonResponsesController extends AppController
     public function view($id = null)
     {
         $semanticCocoonResponse = $this->SemanticCocoonResponses->get($id, [
-            'contain' => ['SemanticCocoons', 'SemanticCocoonLinks', 'SemanticCocoonUniformRessourceLocators']
+            'contain' => ['SemanticCocoons', 'SemanticCocoonLinks', 'SemanticCocoonUrls']
         ]);
 
         $this->set('semanticCocoonResponse', $semanticCocoonResponse);
