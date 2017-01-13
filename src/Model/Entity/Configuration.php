@@ -2,6 +2,7 @@
 namespace App\Model\Entity;
 
 use Cake\ORM\Entity;
+use Cake\ORM\TableRegistry;
 
 /**
  * Configuration Entity
@@ -30,4 +31,16 @@ class Configuration extends Entity
         '*' => true,
         'id' => false
     ];
+    
+    public function getFirstDefault(){
+
+        $configurationsTable = TableRegistry::get('Configurations');
+        $configuration = $configurationsTable
+                ->find()
+                ->where(['is_default' => '1'])
+                ->first();
+        
+        return $configuration;
+        
+    }
 }
