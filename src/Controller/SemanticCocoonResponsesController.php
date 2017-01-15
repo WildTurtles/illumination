@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\ORM\TableRegistry;
 
 /**
  * SemanticCocoonResponses Controller
@@ -39,7 +40,19 @@ class SemanticCocoonResponsesController extends AppController
         $semanticCocoonResponse = $this->SemanticCocoonResponses->get($id, [
             'contain' => ['SemanticCocoons', 'SemanticCocoonLinks', 'SemanticCocoonUrls']
         ]);
-
+        $languagesTable = TableRegistry::get('Languages');
+        $language = $languagesTable
+			->find()
+			->where(['id' => $semanticCocoonResponse->semantic_cocoon->language_id])
+			->first();
+			
+		$corpusesTable = TableRegistry::get('Corpuses');
+        $corpuses = $corpusesTable
+			->find()
+			->where(['id' => $semanticCocoonResponse->semantic_cocoon->corpus_id])
+			->first();
+		$this->set('language', $language);
+		$this->set('corpuses', $corpuses);
         $this->set('semanticCocoonResponse', $semanticCocoonResponse);
         $this->set('_serialize', ['semanticCocoonResponse']);
     }
