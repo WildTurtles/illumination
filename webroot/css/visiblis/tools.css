@@ -567,7 +567,7 @@ text {
 #ctrlR td, #ctrlR td {border:none}
 #ctrlR strong, #ctrlD strong {display:block;text-align:center;font-size:24px}
 #ctrlR {position:relative;width:680px;display:inline-block}
-#ctrlL {position:relative;vertical-align:top;min-width:278px;;display:inline-block}
+#ctrlL {position:relative;vertical-align:top;min-width:278px;display:inline-block}
 #uSrc,#uDst {overflow:hidden}
 #uSrc span,#uDst span {display:inline-block;white-space:nowrap}
 #testcorpus {display:none}
