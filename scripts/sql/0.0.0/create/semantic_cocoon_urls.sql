@@ -2,6 +2,7 @@ CREATE TABLE semantic_cocoon_urls (
   id                          uuid NOT NULL,
   id_url_visiblis             int8,
   url                         text,
+  cluster                     int2,
   as_title                    numeric,
   as_page                     numeric,
   title_semantic_rank         numeric,

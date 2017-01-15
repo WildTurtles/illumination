@@ -36,7 +36,9 @@
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['action' => 'view', $semanticCocoonResponse->id]) ?>
                     <?= $this->Html->link(__('Edit'), ['action' => 'edit', $semanticCocoonResponse->id]) ?>
+                    <?= $this->Html->link(__('Statuts'), ['action' => 'getStatus', $semanticCocoonResponse->id]) ?>
                     <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $semanticCocoonResponse->id], ['confirm' => __('Are you sure you want to delete # {0}?', $semanticCocoonResponse->id)]) ?>
+                    <?= $this->Form->postLink(__('Cancel'), ['action' => 'cancel', $semanticCocoonResponse->id], ['confirm' => __('Are you sure you want to cancel # {0}?', $semanticCocoonResponse->id)]) ?>
                 </td>
             </tr>
             <?php endforeach; ?>
