@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Model\Table;
 
 use Cake\ORM\Query;
@@ -22,8 +23,7 @@ use Cake\Validation\Validator;
  *
  * @mixin \Cake\ORM\Behavior\TimestampBehavior
  */
-class SemanticCocoonUrlsTable extends Table
-{
+class SemanticCocoonUrlsTable extends Table {
 
     /**
      * Initialize method
@@ -31,8 +31,7 @@ class SemanticCocoonUrlsTable extends Table
      * @param array $config The configuration for the Table.
      * @return void
      */
-    public function initialize(array $config)
-    {
+    public function initialize(array $config) {
         parent::initialize($config);
 
         $this->table('semantic_cocoon_urls');
@@ -57,37 +56,40 @@ class SemanticCocoonUrlsTable extends Table
      * @param \Cake\Validation\Validator $validator Validator instance.
      * @return \Cake\Validation\Validator
      */
-    public function validationDefault(Validator $validator)
-    {
+    public function validationDefault(Validator $validator) {
         $validator
-            ->uuid('id')
-            ->allowEmpty('id', 'create');
+                ->uuid('id')
+                ->allowEmpty('id', 'create');
 
         $validator
-            ->allowEmpty('id_url_visiblis');
+                ->allowEmpty('id_url_visiblis');
 
         $validator
-            ->allowEmpty('url');
+                ->allowEmpty('url');
 
         $validator
-            ->decimal('as_title')
-            ->allowEmpty('as_title');
+                ->integer('clusters')
+                ->allowEmpty('clusters');
 
         $validator
-            ->decimal('as_page')
-            ->allowEmpty('as_page');
+                ->decimal('as_title')
+                ->allowEmpty('as_title');
 
         $validator
-            ->decimal('title_semantic_rank')
-            ->allowEmpty('title_semantic_rank');
+                ->decimal('as_page')
+                ->allowEmpty('as_page');
 
         $validator
-            ->decimal('page_semantic_rank')
-            ->allowEmpty('page_semantic_rank');
+                ->decimal('title_semantic_rank')
+                ->allowEmpty('title_semantic_rank');
 
         $validator
-            ->decimal('page_rank')
-            ->allowEmpty('page_rank');
+                ->decimal('page_semantic_rank')
+                ->allowEmpty('page_semantic_rank');
+
+        $validator
+                ->decimal('page_rank')
+                ->allowEmpty('page_rank');
 
         return $validator;
     }
@@ -99,11 +101,11 @@ class SemanticCocoonUrlsTable extends Table
      * @param \Cake\ORM\RulesChecker $rules The rules object to be modified.
      * @return \Cake\ORM\RulesChecker
      */
-    public function buildRules(RulesChecker $rules)
-    {
+    public function buildRules(RulesChecker $rules) {
         $rules->add($rules->existsIn(['http_status_code_id'], 'HttpStatusCodes'));
         $rules->add($rules->existsIn(['semantic_cocoon_response_id'], 'SemanticCocoonResponses'));
 
         return $rules;
     }
+
 }
