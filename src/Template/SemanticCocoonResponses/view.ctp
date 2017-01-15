@@ -1,15 +1,15 @@
-<?= $this->Html->css('visiblis/kube.css'); ?>
-<?= $this->Html->css('visiblis/visiblis-font.css'); ?>
-<?= $this->Html->css('visiblis/tools.css'); ?>
-<?= $this->Html->css('visiblis/tooltipster.css'); ?>
-<?= $this->Html->css('visiblis/jquery.jqGauges.css'); ?>
+<?= $this->Html->css('visiblis/kube.css', array('block' => 'css')); ?>
+<?= $this->Html->css('visiblis/visiblis-font.css', array('block' => 'css')); ?>
+<?= $this->Html->css('visiblis/tools.css', array('block' => 'css')); ?>
+<?= $this->Html->css('visiblis/tooltipster.css', array('block' => 'css')); ?>
+<?= $this->Html->css('visiblis/jquery.jqGauges.css', array('block' => 'css')); ?>
 
 <?php echo $this->Html->script('visiblis/jquery-1.11.0.min.js');?>
 <?php echo $this->Html->script('visiblis/jquery.jqGauges.min.js');?>
 <?php echo $this->Html->script('visiblis/jquery.tooltipster.min.js');?>
 <?php echo $this->Html->script('visiblis/jquery.validate.min.js');?>
 <?php echo $this->Html->script('visiblis/visiblis-v2.js');?>
-
+<!-- VU -->
 <?php echo $this->Html->script('ajout/src/sigma.core.js');?>
 <?php echo $this->Html->script('ajout/src/conrad.js');?>
 <?php echo $this->Html->script('ajout/src/utils/sigma.utils.js');?>
@@ -18,49 +18,33 @@
 <?php echo $this->Html->script('ajout/src/classes/sigma.classes.dispatcher.js');?>
 <?php echo $this->Html->script('ajout/src/classes/sigma.classes.configurable.js');?>
 <?php echo $this->Html->script('ajout/src/classes/sigma.classes.graph.js');?>
-<?php echo $this->Html->script('ajout/src/classes/sigma.classes.camera.js');?>
+<?php echo $this->Html->script('ajout/src/classes/sigma.classes.camera2.js');?>
 <?php echo $this->Html->script('ajout/src/classes/sigma.classes.quad.js');?>
 <?php echo $this->Html->script('ajout/src/classes/sigma.classes.edgequad.js');?>
-<?php echo $this->Html->script('ajout/src/captors/sigma.captors.mouse.js');?>
-<?php echo $this->Html->script('ajout/src/captors/sigma.captors.touch.js');?>
-<?php echo $this->Html->script('ajout/src/renderers/sigma.renderers.canvas.js');?>
-<?php echo $this->Html->script('ajout/src/renderers/sigma.renderers.webgl.js');?>
-<?php echo $this->Html->script('ajout/src/renderers/sigma.renderers.svg.js');?>
-<?php echo $this->Html->script('ajout/src/renderers/sigma.renderers.def.js');?>
-<?php echo $this->Html->script('ajout/src/renderers/webgl/sigma.webgl.nodes.def.js');?>
-<?php echo $this->Html->script('ajout/src/renderers/webgl/sigma.webgl.nodes.fast.js');?>
-<?php echo $this->Html->script('ajout/src/renderers/webgl/sigma.webgl.edges.def.js');?>
-<?php echo $this->Html->script('ajout/src/renderers/webgl/sigma.webgl.edges.fast.js');?>
-<?php echo $this->Html->script('ajout/src/renderers/webgl/sigma.webgl.edges.arrow.js');?>
+<?php echo $this->Html->script('ajout/src/captors/sigma.captors.mouse2.js');?>
+<?php echo $this->Html->script('ajout/src/captors/sigma.captors.touch2.js');?>
+<?php echo $this->Html->script('ajout/src/renderers/sigma.renderers.canvas2.js');?>
+
+<!--  VU-->
 <?php echo $this->Html->script('ajout/src/renderers/canvas/sigma.canvas.labels.def.js');?>
-<?php echo $this->Html->script('ajout/src/renderers/canvas/sigma.canvas.hovers.def.js');?>
-<?php echo $this->Html->script('ajout/src/renderers/canvas/sigma.canvas.nodes.def.js');?>
+<?php echo $this->Html->script('ajout/src/renderers/canvas/sigma.canvas.hovers2.def.js');?>
+<?php echo $this->Html->script('ajout/src/renderers/canvas/sigma.canvas.nodes2.def.js');?>
 <?php echo $this->Html->script('ajout/src/renderers/canvas/sigma.canvas.edges.def.js');?>
-<?php echo $this->Html->script('ajout/src/renderers/canvas/sigma.canvas.edges.curve.js');?>
-<?php echo $this->Html->script('ajout/src/renderers/canvas/sigma.canvas.edges.arrow.js');?>
-<?php echo $this->Html->script('ajout/src/renderers/canvas/sigma.canvas.edges.curvedArrow.js');?>
-<?php echo $this->Html->script('ajout/src/renderers/canvas/sigma.canvas.edgehovers.def.js');?>
-<?php echo $this->Html->script('ajout/src/renderers/canvas/sigma.canvas.edgehovers.curve.js');?>
-<?php echo $this->Html->script('ajout/src/renderers/canvas/sigma.canvas.edgehovers.arrow.js');?>
-<?php echo $this->Html->script('ajout/src/renderers/canvas/sigma.canvas.edgehovers.curvedArrow.js');?>
+<!--  VU AJOUT J-->
+<?php echo $this->Html->script('src/renderers/canvas/sigma.canvas.edges.visiblis.js');?>
+<!-- VU -->
 <?php echo $this->Html->script('ajout/src/renderers/canvas/sigma.canvas.extremities.def.js');?>
-<?php echo $this->Html->script('ajout/src/renderers/svg/sigma.svg.utils.js');?>
-<?php echo $this->Html->script('ajout/src/renderers/svg/sigma.svg.nodes.def.js');?>
-<?php echo $this->Html->script('ajout/src/renderers/svg/sigma.svg.edges.def.js');?>
-<?php echo $this->Html->script('ajout/src/renderers/svg/sigma.svg.edges.curve.js');?>
-<?php echo $this->Html->script('ajout/src/renderers/svg/sigma.svg.labels.def.js');?>
-<?php echo $this->Html->script('ajout/src/renderers/svg/sigma.svg.hovers.def.js');?>
 <?php echo $this->Html->script('ajout/src/middlewares/sigma.middlewares.rescale.js');?>
 <?php echo $this->Html->script('ajout/src/middlewares/sigma.middlewares.copy.js');?>
 <?php echo $this->Html->script('ajout/src/misc/sigma.misc.animation.js');?>
 <?php echo $this->Html->script('ajout/src/misc/sigma.misc.bindEvents.js');?>
 <?php echo $this->Html->script('ajout/src/misc/sigma.misc.bindDOMEvents.js');?>
 <?php echo $this->Html->script('ajout/src/misc/sigma.misc.drawHovers.js');?>
-
-<?php echo $this->Html->script('src/renderers/canvas/sigma.canvas.edges.visiblis.js');?>
 <?php echo $this->Html->script('plugins/sigma.layout.treeGraph.js');?>
 <?php echo $this->Html->script('plugins/sigma.layout.forceAtlas2.min.js');?>
 <?php echo $this->Html->script('plugins/sigma.layout.forceAtlas2/supervisor.js');?>
+
+
 
 
 <!--  Tab with value of page selected-->
@@ -192,8 +176,10 @@ s = new sigma({
 });
 </script>-->
 	<div id="graph">
-		<div id="display"></div>
-		
+		<div id="display">
+<!-- 			<canvas class="sigma-background" style="position:absolute; width:1056px; height:516px; display:block;" width="1056" height="516px"></canvas> -->
+		</div>
+			
 		
 		
 		<div id="gtBox">
@@ -210,11 +196,15 @@ s = new sigma({
 			<div class="context CGraph">
 				<span id="toggleAtlas" class="btn tooltip" title="Start / Stop force atlas"><i class="visiblis-play"></i></span>
 				<span id="fastAtlas" class="btn tooltip" title="Mode précis / rapide"><i class="visiblis-fast"></i></span>
+				
+			<span id="ruler"></span>
 		<script type="text/javascript">
 			
 			var links =<?php echo json_encode($semanticCocoonResponse->semantic_cocoon_links);?>;
 		
 			//TODO variables à comprendre
+			var mem="";
+			var response;
 			var Gravity=0;
 			var flag=true;
 			var mode={"form":"force","what":"pr","etype":"arrow"};
@@ -272,7 +262,184 @@ s = new sigma({
 			
 			
 			//TODO function aff à suivre en vrac
-		
+			$("#gravity").val(1);
+			$("#expand").val(1);
+			$(".legend").html(" TreeAlyser");
+			
+			$("input").bind("keypress",function() {
+				$("#error").css("display","none");
+				$(".field").removeClass("input-error");
+			});  
+			$(".opt").bind("click",function() {
+				if($(this).attr("rel")==1) {
+					flag=1;
+				} else if($(this).attr("rel")==2) {
+					
+					flag=2;
+				}
+			});
+			
+			$(".last").bind("click",function() {
+				$form=$('<form action="/outils/treealyser.html" method="POST"><input type="hidden" name="last" value="ok"></form>').appendTo('body'); 
+				$form.submit();
+			});      
+			
+			$(".history").bind("click",function() {
+				$("#trace").html("Veuillez patienter...");
+				$("#loading").css("display","block");      
+				historique();
+			});       
+					
+			$("#save").bind("click",function() {
+				request_mem();
+			});      
+			
+			$(".bulle").each(function() {
+				$("#error").css("display","none");
+				$(this).tooltipster({trigger:'hover',maxWidth:600,content: tips_txt[$(this).attr("rel")]});			
+			});
+					
+			function testForm() {
+				return(false);
+			}
+			
+			function testField() {
+						if($("#urls").val().length==0) {
+							if($("#root").val().length!=0) {
+								var url=$("#root").val().toLowerCase();
+								var parsedSrc=parseUri(url);
+								if(!(parsedSrc.protocol=="http" || parsedSrc.protocol=="https")) {
+									$("#error ul.lists-simple").html("<li>L'url doit commencer par : http(s)://</li>"); 
+									$("#loading").css("display","none");
+									$("#error").css("display","block").focus();
+									return false; 
+								} else if(Url_Valide(url,false)==false) {
+									$("#error ul.lists-simple").html("<li>Veuillez saisir une url valide</li>"); 
+									$("#loading").css("display","none");
+									$("#error").css("display","block").focus();
+									return false;
+								}  else if(parsedSrc.host.indexOf("google")>0) {
+									$("#error ul.lists-simple").html("<li>Les urls Google ne sont pas autorisées</li>"); 
+									$("#loading").css("display","none");
+									$("#error").css("display","block").focus();
+									return false; 
+								} else if(parsedSrc.host.indexOf("bing")>0) {
+									$("#error ul.lists-simple").html("<li>Les urls Bing ne sont pas autorisées</li>"); 
+									$("#loading").css("display","none");
+									$("#error").css("display","block").focus();
+									return false; 
+								} else if(parsedSrc.host.indexOf("yahoo")>0) {
+									$("#error ul.lists-simple").html("<li>Les urls Yahoo ne sont pas autorisées</li>"); 
+									$("#loading").css("display","none");
+									$("#error").css("display","block").focus();
+									return false; 
+								}
+								if($("#mask").val()==0 && $("#nomask").val()>0) {
+									$("#error ul.lists-simple").html("<li>Veuillez saisir le masque d'url</li>"); 
+									$("#loading").css("display","none");
+									$("#error").css("display","block").focus();
+									return false;
+								}
+								if($("#mask").val()==0 && $("#nomask").val()>0) {
+									var mask=$("#mask").val().toLowerCase();
+									var parsedMask=parseUri(mask);
+									if(!(parsedMask.protocol=="http" || parsedMask.protocol=="https")) {
+										$("#error ul.lists-simple").html("<li>Le masque d'url commencer par : http(s)://</li>"); 
+										$("#loading").css("display","none");
+										$("#error").css("display","block").focus();
+										return false; 
+									} else if(Url_Valide(mask,false)==false) {
+										$("#error ul.lists-simple").html("<li>Le masque doit être une url valide</li>"); 
+										$("#loading").css("display","none");
+										$("#error").css("display","block").focus();
+										return false;
+									}  else if(parsedMask.host.indexOf("google")>0) {
+										$("#error ul.lists-simple").html("<li>Les urls Google ne sont pas autorisées</li>"); 
+										$("#loading").css("display","none");
+										$("#error").css("display","block").focus();
+										return false; 
+									} else if(parsedMask.host.indexOf("bing")>0) {
+										$("#error ul.lists-simple").html("<li>Les urls Bing ne sont pas autorisées</li>"); 
+										$("#loading").css("display","none");
+										$("#error").css("display","block").focus();
+										return false; 
+									} else if(parsedMask.host.indexOf("yahoo")>0) {
+										$("#error ul.lists-simple").html("<li>Les urls Yahoo ne sont pas autorisées</li>"); 
+										$("#loading").css("display","none");
+										$("#error").css("display","block").focus();
+										return false; 
+									}
+								}
+							} 
+							return true; 
+						} else {
+							var urls= $('#urls').val().split('\n');
+							var cpt=0;  
+							for(var url in urls){
+								if(urls[url]!="") {
+									cpt++;
+									var parsedSrc=parseUri(urls[url].toLowerCase());
+									if(!(parsedSrc.protocol=="http" || parsedSrc.protocol=="https")) {
+										$("#error ul.lists-simple").html("<li>L'url doit commencer par : http(s)://</li>"); 
+										$("#loading").css("display","none");
+										$("#error").css("display","block").focus();
+										return false; 
+									} else if(Url_Valide(urls[url],false)==false) {
+										$("#error ul.lists-simple").html("<li>Veuillez saisir une url valide</li>"); 
+										$("#loading").css("display","none");
+										$("#error").css("display","block").focus();
+										return false; 
+									}  else if(parsedSrc.host.indexOf("google")>0) {
+										$("#error ul.lists-simple").html("<li>Les urls Google ne sont pas autorisées</li>"); 
+										$("#loading").css("display","none");
+										$("#error").css("display","block").focus();
+										return false; 
+									} else if(parsedSrc.host.indexOf("bing")>0) {
+										$("#error ul.lists-simple").html("<li>Les urls Bing ne sont pas autorisées</li>"); 
+										$("#loading").css("display","none");
+										$("#error").css("display","block").focus();
+										return false; 
+									} else if(parsedSrc.host.indexOf("yahoo")>0) {
+										$("#error ul.lists-simple").html("<li>Les urls Yahoo ne sont pas autorisées</li>"); 
+										$("#loading").css("display","none");
+										$("#error").css("display","block").focus();
+										return false; 
+									}
+								}
+							}
+							if(cpt==0) {
+								$("#error ul.lists-simple").html("<li>Veuillez saisir au moins une url</li>"); 
+								$("#loading").css("display","none");
+								$("#error").css("display","block").focus();
+								return false; 
+							} else if(cpt>50) {
+								$("#error ul.lists-simple").html("<li>Le nombre d'urls est limité à 50</li>"); 
+								$("#loading").css("display","none");
+								$("#error").css("display","block").focus();
+								return false; 
+							}
+						}
+						return (true);
+					}
+					function request_mem() {
+					var name = prompt("Donnez un nom à votre analyse : :", "")
+					if (name!=null) {
+						$("#trace").html("Donnez un nom à votre analyse :");
+						$("#loading").css("display","block");      
+						$("#error").css("display","none");
+						Timer=setInterval(trace_request, 2000);
+					}		
+				}
+				
+				gravity=1;
+						$("#gravity").val(1);
+						$("#gravity").parent().children("output").html(1);
+						scalingRatio=1;
+						$("#expand").val(1);
+						$("#expand").parent().children("output").html(1);
+						$("#mem").css("display","inline-block");
+						$(".tohide").css("display","none");
+						$(".toshow").css("display","block");
 			var maxPR=0;
 			var maxSRT=0;
 			var maxSRP=0;
