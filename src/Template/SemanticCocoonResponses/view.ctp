@@ -45,6 +45,23 @@
 <?php echo $this->Html->script('plugins/sigma.layout.forceAtlas2/supervisor.js');?>
 
 
+<table id="head" width="100%" class="table-bordered">
+	<thead>
+		<tr>
+			<th align="center">Requête</td>
+			<th align="center">Url</td>
+			<th align="center">Langue / Pays</td>
+			<th align="center">Corpus</td>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td id="requete"><?= h($semanticCocoonResponse->semantic_cocoon->request) ?></td>
+			<td id="cocon"><?= h($semanticCocoonResponse->semantic_cocoon->url) ?></td>
+			<td id="paysLangue"><?= h($language->name) ?></td>
+			<td id="corpusN"><?= h($corpuses->name) ?></td>
+		</tr>
+	</tbody>
 
 
 <!--  Tab with value of page selected-->
@@ -185,7 +202,7 @@ s = new sigma({
 		<div id="gtBox">
 			<div>
 				<span id="dirGraph" class="btn btn-active" title="Graphe dirigé"><i class="visiblis-dirgraph"></i></span>
-				<span id="zoomFit" class="btn" title="Ajuster à la page"><i class="visiblis-zoom-fit"></i></span>
+				<span id="zoomFi->t" class="btn" title="Ajuster à la page"><i class="visiblis-zoom-fit"></i></span>
 				<span id="zoomIn" class="btn" title="Zoom avant"><i class="visiblis-zoom-in"></i></span>
 				<span id="zoomOut" class="btn" title="Zoom arriere"><i class="visiblis-zoom-out"></i></span>
 			</div>
