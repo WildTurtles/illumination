@@ -138,63 +138,9 @@
 				
 			</ul></div>
 		</div>
-		<!-- Pas touché à la partie graphe !!!!	 -->
-	<!--	<div id="container">
-  <style>
-    #graph-container {
-      top: 0;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      position: absolute;
-    }
-  </style>
-  <div id="graph-container"></div>
-</div>
-<script>
-/**
- * This is a basic example on how to instantiate sigma. A random graph is
- * generated and stored in the "graph" variable, and then sigma is instantiated
- * directly with the graph.
- *
- * The simple instance of sigma is enough to make it render the graph on the on
- * the screen, since the graph is given directly to the constructor.
- */
-var i,
-    s,
-    N = 100,
-    E = 500,
-    g = {
-      nodes: [],
-      edges: []
-    };
-// Generate a random graph:
-for (i = 0; i < N; i++)
-  g.nodes.push({
-    id: 'n' + i,
-    label: 'Node ' + i,
-    x: Math.random(),
-    y: Math.random(),
-    size: Math.random(),
-    color: '#666'
-  });
-for (i = 0; i < E; i++)
-  g.edges.push({
-    id: 'e' + i,
-    source: 'n' + (Math.random() * N | 0),
-    target: 'n' + (Math.random() * N | 0),
-    size: Math.random(),
-    color: '#ccc'
-  });
-// Instantiate sigma:
-s = new sigma({
-  graph: g,
-  container: 'graph-container'
-});
-</script>-->
+	
 	<div id="graph">
 		<div id="display">
-<!-- 			<canvas class="sigma-background" style="position:absolute; width:1056px; height:516px; display:block;" width="1056" height="516px"></canvas> -->
 		</div>
 			
 		
@@ -219,7 +165,6 @@ s = new sigma({
 			
 			var links =<?php echo json_encode($semanticCocoonResponse->semantic_cocoon_links);?>;
 		
-			//TODO variables à comprendre
 			var mem="";
 			var response;
 			var Gravity=0;
@@ -248,7 +193,6 @@ s = new sigma({
 			var visNodeMargin=10;
 			var minNodeSize=10,maxNodeSize=110;
 			
-			//TODO fonction addMethode
 			sigma.classes.graph.addMethod('neighborsIn', function(nodeId) {
 				var k,
 				i,
@@ -275,10 +219,6 @@ s = new sigma({
 			});
 			sigma.renderers.def = sigma.renderers.canvas;
 			
-			//TODO function basique
-			
-			
-			//TODO function aff à suivre en vrac
 			$("#gravity").val(1);
 			$("#expand").val(1);
 			$(".legend").html(" TreeAlyser");
@@ -568,7 +508,6 @@ s = new sigma({
 			s.refresh();
 			CGraph();			
 			
-			//TODO fonction bind 
 			s.bind('clickStage', function(e) {
 				if(selectedNode!=null) {
 					nodeUnSelect(false);
@@ -598,7 +537,6 @@ s = new sigma({
 				nodeSelect(n);
 			});
 			
-			//TODO definition des id et classes
 			$("#Tscroll li").bind("click",function() 
 			{
 				var id=$(this).attr("id");;
@@ -763,7 +701,6 @@ s = new sigma({
 				}
 			});
 		
-			//TODO autres fonctions
 			function configAtlas() {
 				s.configForceAtlas2({
 					worker: true,
