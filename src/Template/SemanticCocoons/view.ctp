@@ -1,35 +1,13 @@
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
         <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('Edit Semantic Cocoon'), ['action' => 'edit', $semanticCocoon->id]) ?> </li>
-        <li><?= $this->Form->postLink(__('Delete Semantic Cocoon'), ['action' => 'delete', $semanticCocoon->id], ['confirm' => __('Are you sure you want to delete # {0}?', $semanticCocoon->id)]) ?> </li>
         <li><?= $this->Html->link(__('List Semantic Cocoons'), ['action' => 'index']) ?> </li>
         <li><?= $this->Html->link(__('New Semantic Cocoon'), ['action' => 'add']) ?> </li>
-        <li><?= $this->Html->link(__('List Languages'), ['controller' => 'Languages', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Language'), ['controller' => 'Languages', 'action' => 'add']) ?> </li>
-        <li><?= $this->Html->link(__('List Corpuses'), ['controller' => 'Corpuses', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Corpus'), ['controller' => 'Corpuses', 'action' => 'add']) ?> </li>
-        <li><?= $this->Html->link(__('List Accounts'), ['controller' => 'Accounts', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Account'), ['controller' => 'Accounts', 'action' => 'add']) ?> </li>
-        <li><?= $this->Html->link(__('List Cocoons Categories'), ['controller' => 'CocoonsCategories', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Cocoons Category'), ['controller' => 'CocoonsCategories', 'action' => 'add']) ?> </li>
-        <li><?= $this->Html->link(__('List Queue Elements'), ['controller' => 'QueueElements', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Queue Element'), ['controller' => 'QueueElements', 'action' => 'add']) ?> </li>
-        <li><?= $this->Html->link(__('List Semantic Cocoon Responses'), ['controller' => 'SemanticCocoonResponses', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Semantic Cocoon Response'), ['controller' => 'SemanticCocoonResponses', 'action' => 'add']) ?> </li>
     </ul>
 </nav>
 <div class="semanticCocoons view large-9 medium-8 columns content">
     <h3><?= h($semanticCocoon->name) ?></h3>
     <table class="vertical-table">
-        <tr>
-            <th scope="row"><?= __('Id') ?></th>
-            <td><?= h($semanticCocoon->id) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Name') ?></th>
-            <td><?= h($semanticCocoon->name) ?></td>
-        </tr>
         <tr>
             <th scope="row"><?= __('Language') ?></th>
             <td><?= $semanticCocoon->has('language') ? $this->Html->link($semanticCocoon->language->name, ['controller' => 'Languages', 'action' => 'view', $semanticCocoon->language->id]) : '' ?></td>
@@ -80,8 +58,9 @@
         <?= $this->Text->autoParagraph(h($semanticCocoon->request)); ?>
     </div>
     <div class="related">
-        <h4><?= __('Related Queue Elements') ?></h4>
+        
         <?php if (!empty($semanticCocoon->queue_elements)): ?>
+        <h4><?= __('Related Queue Elements') ?></h4>
         <table cellpadding="0" cellspacing="0">
             <tr>
                 <th scope="col"><?= __('Id') ?></th>
@@ -109,26 +88,25 @@
         <?php if (!empty($semanticCocoon->semantic_cocoon_responses)): ?>
         <table cellpadding="0" cellspacing="0">
             <tr>
-                <th scope="col"><?= __('Id') ?></th>
                 <th scope="col"><?= __('Started') ?></th>
                 <th scope="col"><?= __('Ended') ?></th>
                 <th scope="col"><?= __('Count') ?></th>
-                <th scope="col"><?= __('Semantic Cocoon Id') ?></th>
                 <th scope="col"><?= __('Token') ?></th>
                 <th scope="col" class="actions"><?= __('Actions') ?></th>
             </tr>
             <?php foreach ($semanticCocoon->semantic_cocoon_responses as $semanticCocoonResponses): ?>
             <tr>
-                <td><?= h($semanticCocoonResponses->id) ?></td>
                 <td><?= h($semanticCocoonResponses->started) ?></td>
                 <td><?= h($semanticCocoonResponses->ended) ?></td>
                 <td><?= h($semanticCocoonResponses->count) ?></td>
-                <td><?= h($semanticCocoonResponses->semantic_cocoon_id) ?></td>
                 <td><?= h($semanticCocoonResponses->token) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['controller' => 'SemanticCocoonResponses', 'action' => 'view', $semanticCocoonResponses->id]) ?>
-                    <?= $this->Html->link(__('Edit'), ['controller' => 'SemanticCocoonResponses', 'action' => 'edit', $semanticCocoonResponses->id]) ?>
-                    <?= $this->Form->postLink(__('Delete'), ['controller' => 'SemanticCocoonResponses', 'action' => 'delete', $semanticCocoonResponses->id], ['confirm' => __('Are you sure you want to delete # {0}?', $semanticCocoonResponses->id)]) ?>
+                    
+                    <?php if(is_null($semanticCocoonResponses->ended)){ ?>
+                    <?= $this->Html->link(__('Statuts'), ['controller' => 'SemanticCocoonResponses', 'action' => 'getStatus', $semanticCocoonResponses->id]) ?>
+                    <?= $this->Form->postLink(__('Cancel'), ['controller' => 'SemanticCocoonResponses', 'action' => 'cancel', $semanticCocoonResponses->id], ['confirm' => __('Are you sure you want to cancel # {0}?', $semanticCocoonResponses->id)]) ?>
+                    <?php } ?>
                 </td>
             </tr>
             <?php endforeach; ?>
