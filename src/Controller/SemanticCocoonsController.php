@@ -151,6 +151,7 @@ class SemanticCocoonsController extends AppController {
         $parameter['url'] = $request->get('url');
         $parameter['mail'] = $this->Auth->user('email');        
         $parameter['req'] = $request->get('request');
+//         if ($request->get('clusters'))
         $parameter['clr'] = $request->get('clusters');
         $parameter['ping'] = Router::url('/', true) . "semantic-cocoons/response";
         $parameter['lng'] = $request->get('language')->get('visiblis_code');
@@ -210,6 +211,14 @@ class SemanticCocoonsController extends AppController {
                 ->where(['token' => $token])
                 ->first();
 
+		$category = $this->SemanticCocoons->get($result->semantic_cocoon_id)->cocoon_category_id;
+                
+		$treeTable = TableRegistry::get('CocoonCategories');
+		$tree = $treeTable
+					->find()
+					->where(['name' => 'TreeAlyser'])
+					->first();
+		
         //end of request's time
         $time = Time::now();
         //save end time
@@ -260,24 +269,45 @@ class SemanticCocoonsController extends AppController {
             }
 
             $httpStatusCodes = TableRegistry::get('http_status_codes');
-            foreach ($json['urls'] as $url) {
-                $semanticCocoonUrls = $this->SemanticCocoonUrls->newEntity();
-                $semanticCocoonUrls->id_url_visiblis = $url['id'];
-                $semanticCocoonUrls->url = $url['url'];
-                $semanticCocoonUrls->as_title = $url['as_titre'];
-                $semanticCocoonUrls->as_page = $url['as_page'];
-                $semanticCocoonUrls->title_semantic_rank = $url['sr_titre'];
-                $semanticCocoonUrls->page_semantic_rank = $url['sr_page'];
-                $semanticCocoonUrls->page_rank = $url['pr_page'];
-                $semanticCocoonUrls->semantic_cocoon_response_id = $result->id;
-                $code = $httpStatusCodes
-                        ->find()
-                        ->where(['name' => $url['rt_code']])
-                        ->first();
-                $semanticCocoonUrls->http_status_code_id = 'bfec5b49-7951-4195-af89-57bd53e0bbe4';
-                $this->SemanticCocoonUrls->save($semanticCocoonUrls);
-			
-            }
+            if ($category==$tree)
+            {
+				foreach ($json['urls'] as $url) {
+					$semanticCocoonUrls = $this->SemanticCocoonUrls->newEntity();
+					$semanticCocoonUrls->id_url_visiblis = $url['id'];
+					$semanticCocoonUrls->url = $url['url'];
+					$semanticCocoonUrls->as_title = $url['as_titre'];
+					$semanticCocoonUrls->as_page = $url['as_page'];
+					$semanticCocoonUrls->title_semantic_rank = $url['sr_titre'];
+					$semanticCocoonUrls->page_semantic_rank = $url['sr_page'];
+					$semanticCocoonUrls->page_rank = $url['pr_page'];
+					$semanticCocoonUrls->semantic_cocoon_response_id = $result->id;
+					$code = $httpStatusCodes
+							->find()
+							->where(['name' => $url['rt_code']])
+							->first();
+					$semanticCocoonUrls->http_status_code_id = 'bfec5b49-7951-4195-af89-57bd53e0bbe4';
+					$this->SemanticCocoonUrls->save($semanticCocoonUrls);
+				
+				}
+			}
+			else
+			{
+				foreach ($json['urls'] as $url) 
+				{
+					$semanticCocoonUrls = $this->SemanticCocoonUrls->newEntity();
+					$semanticCocoonUrls->url = $url['url'];
+					$semanticCocoonUrls->id_url_visiblis = $url['id'];
+					$semanticCocoonUrls->cluster= $url['cluster'];
+					$semanticCocoonUrls->page_rank = $url['pr_page'];
+					$semanticCocoonUrls->semantic_cocoon_response_id = $result->id;
+					$code = $httpStatusCodes
+							->find()
+							->where(['name' => $url['rt_code']])
+							->first();
+					$semanticCocoonUrls->http_status_code_id = 'bfec5b49-7951-4195-af89-57bd53e0bbe4';
+					$this->SemanticCocoonUrls->save($semanticCocoonUrls);
+				}
+			}
 
             return $this->redirect(['controller' => 'SemanticCocoonResponses', 'action' => 'view', $result->id]);
         } else {

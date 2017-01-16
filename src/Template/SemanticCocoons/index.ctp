@@ -30,7 +30,7 @@
                 <td><?= h($semanticCocoon->name) ?></td>
                 <td><?= $this->Number->format($semanticCocoon->count) ?></td>
                 <td><?= $this->Number->format($semanticCocoon->clusters) ?></td>
-                <td><?= $semanticCocoon->has('cocoons_category') ? $this->Html->link($semanticCocoon->cocoons_category->name, ['controller' => 'CocoonsCategories', 'action' => 'view', $semanticCocoon->cocoons_category->id]) : '' ?></td>
+                <td><?= $semanticCocoon->has('cocoons_category') ? $this->Html->link($semanticCocoon->cocoon_category->name, ['controller' => 'CocoonCategories', 'action' => 'view', $semanticCocoon->cocoons_category->id]) : '' ?></td>
                 <td><?= $semanticCocoon->has('language') ? $this->Html->link($semanticCocoon->language->name, ['controller' => 'Languages', 'action' => 'view', $semanticCocoon->language->id]) : '' ?></td>
                 <td><?= $semanticCocoon->has('corpus') ? $this->Html->link($semanticCocoon->corpus->name, ['controller' => 'Corpuses', 'action' => 'view', $semanticCocoon->corpus->id]) : '' ?></td>
                 <td><?= $semanticCocoon->has('account') ? $this->Html->link($semanticCocoon->account->name, ['controller' => 'Accounts', 'action' => 'view', $semanticCocoon->account->id]) : '' ?></td>

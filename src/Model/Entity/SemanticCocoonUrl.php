@@ -16,6 +16,7 @@ use Cake\ORM\Entity;
  * @property float $page_rank
  * @property string $http_status_code_id
  * @property string $semantic_cocoon_response_id
+ * @property int $cluster
  * @property \Cake\I18n\Time $created
  * @property \Cake\I18n\Time $updated
  *

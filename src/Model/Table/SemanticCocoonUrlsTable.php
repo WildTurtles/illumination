@@ -90,6 +90,9 @@ class SemanticCocoonUrlsTable extends Table {
         $validator
                 ->decimal('page_rank')
                 ->allowEmpty('page_rank');
+                
+		$validator
+                ->allowEmpty('cluster');
 
         return $validator;
     }
