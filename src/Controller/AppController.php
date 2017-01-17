@@ -45,7 +45,7 @@ class AppController extends Controller
         $this->loadComponent('Flash');
         $this->loadComponent('Auth', [
             'loginRedirect' => [
-                'controller' => 'SemanticRequests',
+                'controller' => 'Pages',
                 'action' => 'index'
             ],
             'authenticate' => [
