@@ -5,6 +5,9 @@ create()
 
 crte=./create/
 isrt=./insert/
+dbuser=release
+dbname=release
+
 
 #users and groups
 psql -U $dbuser -d $dbname -f ${crte}groups.sql
@@ -65,7 +68,7 @@ psql -U $dbuser -d $dbname -f ${crte}semantic_cocoons.sql
 psql -U $dbuser -d $dbname -f ${crte}queue_elements.sql
 psql -U $dbuser -d $dbname -f ${crte}semantic_cocoon_responses.sql
 psql -U $dbuser -d $dbname -f ${crte}semantic_cocoon_links.sql
-psql -U $dbuser -d $dbname -f ${crte}semantic_cocoon_uniform_ressource_locators.sql
+psql -U $dbuser -d $dbname -f ${crte}semantic_cocoon_urls.sql
 
 
 #if new install (to do 0.2->0.3)
