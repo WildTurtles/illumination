@@ -1,9 +1,4 @@
 
-    <?= $this->Html->css('visiblis/kube.css') ?>
-    <?= $this->Html->css('visiblis/visiblis-font.css') ?>
-    <?= $this->Html->css('visiblis/tools.css') ?>
-    <?= $this->Html->css('visiblis/tooltipster.css') ?>
-    <?= $this->Html->css('visiblis/jquery.jqGauges.css') ?>
     
     <?php echo $this->Html->script('visiblis/jquery-1.11.0.min.js');?>
     <?php echo $this->Html->script('visiblis/jquery.jqGauges.min.js');?>

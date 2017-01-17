@@ -803,3 +803,4 @@
 	</div>
 
 	</div>
+<?= $this->Html->link(__('Retour vers cocoon'), ['controller'=> 'SemanticCocoons','action' => 'index']) ?>

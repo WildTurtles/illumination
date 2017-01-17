@@ -62,14 +62,14 @@
 
 								var needleGradient = {type: 'linearGradient',x0: 0,y0: 0.5,x1: 1,y1: 0.5,colorStops: [{ offset: 0, color: '#888888' },{ offset: 1, color: '#000000'}]};
 								
-								if ( synthese1)
-								{
-								$('.ggtitle').append ("");
-								}
-								else
-								{
-								$('.ggtitle').append (title);
-								}
+// 								if ( synthese1)
+// 								{
+// 								$('.ggtitle').append ("");
+// 								}
+// 								else
+// 								{
+// 								$('.ggtitle').append (title);
+// 								}
 								
 								$('#ForteTitre').jqLinearGauge
 								({
@@ -114,13 +114,6 @@
 					</div>
 
 					<br>
-					<div style="width: 496px; margin: 0 auto; padding: 12px 16px; border: solid 2px #75d8ff; background-color: #ffffff">
-						<div class="ggtitle">qu'est ce que l'analyse sémantique | SEMANTIS</div>
-						<div class="ggurl">http://www.semantis.fr/analyse-semantique/</div>
-						<div class="ggdesc">
-						découvrez ce qu est l'analyse <em>sémantique</em> et comment cette derniere est utilisé pour simplifier la vie des utilisateurs des logciels semantis							
-						</div>
-					</div>					
 					<div class="ggtest" style="display:inline-block;visibility:hidden"></div>
 				</td>
 				
@@ -206,7 +199,7 @@
 			</tr>
 		</table>
 	</div>
+
 </div>
-   
 
 
