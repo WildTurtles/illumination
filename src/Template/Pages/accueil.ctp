@@ -17,19 +17,19 @@
 			<td>Administration</td>
 	  </tr>
 	  <tr>
-		<td><?= $this->Html->link(__('Semantic'), ['controller'=> 'SemanticRequest', 'action' => 'index']) ?></td>
+		<td><?= $this->Html->link(__('Semantic'), ['controller'=> 'SemanticRequests', 'action' => 'index']) ?></td>
 		<td><?= $this->Html->link(__('Users'), ['controller'=> 'Users','action' => 'edit', $this->request->Session()->read('Auth.User.id') ]) ?></td>
 	  </tr>
 	  <tr>
-		<td><?= $this->Html->link(__('Cocoon'), ['controller'=> 'SemanticCocoon','action' => 'index']) ?></td>
-		<td><?= $this->Html->link(__('Configuration'), ['controller'=> 'Configuration','action' => 'index']) ?></td>
+		<td><?= $this->Html->link(__('Cocoon'), ['controller'=> 'SemanticCocoons','action' => 'index']) ?></td>
+		<td><?= $this->Html->link(__('Configuration'), ['controller'=> 'Configurations','action' => 'index']) ?></td>
 	  </tr>
 	   <tr>
 		<td></td>
-		<td><?= $this->Html->link(__('Account'), ['controller'=> 'Account','action' => 'index']) ?></td>
+		<td><?= $this->Html->link(__('Account'), ['controller'=> 'Accounts','action' => 'index']) ?></td>
 	  </tr>
 	  <tr>
 		<td></td>
-		<td><?= $this->Html->link(__('Corpus'), ['controller'=> 'Corpus','action' => 'index']) ?></td>
+		<td><?= $this->Html->link(__('Corpus'), ['controller'=> 'Corpuses','action' => 'index']) ?></td>
 	  </tr>
 	</table>
