@@ -57,8 +57,9 @@ class SemanticCocoonResponsesController extends AppController {
         $this->set('semanticCocoonResponse', $semanticCocoonResponse);
         $this->set('_serialize', ['semanticCocoonResponse']);
     }
+
     
-	public function view2($id = null) {
+    public function cluster($id = null) {
         $semanticCocoonResponse = $this->SemanticCocoonResponses->get($id, [
             'contain' => ['SemanticCocoons', 'SemanticCocoonLinks', 'SemanticCocoonUrls']
         ]);
@@ -78,7 +79,6 @@ class SemanticCocoonResponsesController extends AppController {
         $this->set('semanticCocoonResponse', $semanticCocoonResponse);
         $this->set('_serialize', ['semanticCocoonResponse']);
     }
-
     /**
      * Add method
      *

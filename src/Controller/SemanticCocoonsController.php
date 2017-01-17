@@ -151,7 +151,6 @@ class SemanticCocoonsController extends AppController {
         $parameter['url'] = $request->get('url');
         $parameter['mail'] = $this->Auth->user('email');        
         $parameter['req'] = $request->get('request');
-//         if ($request->get('clusters'))
         $parameter['clr'] = $request->get('clusters');
         $parameter['ping'] = Router::url('/', true) . "semantic-cocoons/response";
         $parameter['lng'] = $request->get('language')->get('visiblis_code');
@@ -212,13 +211,13 @@ class SemanticCocoonsController extends AppController {
                 ->first();
 
 		$category = $this->SemanticCocoons->get($result->semantic_cocoon_id)->cocoon_category_id;
-                
+              
 		$treeTable = TableRegistry::get('CocoonCategories');
 		$tree = $treeTable
 					->find()
 					->where(['name' => 'TreeAlyser'])
 					->first();
-		
+		 
         //end of request's time
         $time = Time::now();
         //save end time
@@ -269,7 +268,7 @@ class SemanticCocoonsController extends AppController {
             }
 
             $httpStatusCodes = TableRegistry::get('http_status_codes');
-            if ($category==$tree)
+            if ($category==$tree->id)
             {
 				foreach ($json['urls'] as $url) {
 					$semanticCocoonUrls = $this->SemanticCocoonUrls->newEntity();
@@ -285,7 +284,7 @@ class SemanticCocoonsController extends AppController {
 							->find()
 							->where(['name' => $url['rt_code']])
 							->first();
-					$semanticCocoonUrls->http_status_code_id = 'bfec5b49-7951-4195-af89-57bd53e0bbe4';
+					$semanticCocoonUrls->http_status_code_id = $code->id;
 					$this->SemanticCocoonUrls->save($semanticCocoonUrls);
 				
 				}
@@ -304,12 +303,18 @@ class SemanticCocoonsController extends AppController {
 							->find()
 							->where(['name' => $url['rt_code']])
 							->first();
-					$semanticCocoonUrls->http_status_code_id = 'bfec5b49-7951-4195-af89-57bd53e0bbe4';
+					$semanticCocoonUrls->http_status_code_id = $code->id;
 					$this->SemanticCocoonUrls->save($semanticCocoonUrls);
 				}
 			}
-
-            return $this->redirect(['controller' => 'SemanticCocoonResponses', 'action' => 'view', $result->id]);
+			if ($category==$tree->id)
+            {
+				return $this->redirect(['controller' => 'SemanticCocoonResponses', 'action' => 'view', $result->id]);
+			}
+			else
+			{
+				return $this->redirect(['controller' => 'SemanticCocoonResponses', 'action' => 'cluster', $result->id]);
+			}
         } else {
             if ($req_response->getStatusCode() === '404') {
 

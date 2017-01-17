@@ -9,7 +9,6 @@
 <?php echo $this->Html->script('visiblis/jquery.tooltipster.min.js');?>
 <?php echo $this->Html->script('visiblis/jquery.validate.min.js');?>
 <?php echo $this->Html->script('visiblis/visiblis-v2.js');?>
-<!-- VU -->
 <?php echo $this->Html->script('ajout/src/sigma.core.js');?>
 <?php echo $this->Html->script('ajout/src/conrad.js');?>
 <?php echo $this->Html->script('ajout/src/utils/sigma.utils.js');?>
@@ -24,15 +23,11 @@
 <?php echo $this->Html->script('ajout/src/captors/sigma.captors.mouse2.js');?>
 <?php echo $this->Html->script('ajout/src/captors/sigma.captors.touch2.js');?>
 <?php echo $this->Html->script('ajout/src/renderers/sigma.renderers.canvas2.js');?>
-
-<!--  VU-->
 <?php echo $this->Html->script('ajout/src/renderers/canvas/sigma.canvas.labels.def.js');?>
 <?php echo $this->Html->script('ajout/src/renderers/canvas/sigma.canvas.hovers2.def.js');?>
 <?php echo $this->Html->script('ajout/src/renderers/canvas/sigma.canvas.nodes2.def.js');?>
 <?php echo $this->Html->script('ajout/src/renderers/canvas/sigma.canvas.edges.def.js');?>
-<!--  VU AJOUT J-->
 <?php echo $this->Html->script('src/renderers/canvas/sigma.canvas.edges.visiblis.js');?>
-<!-- VU -->
 <?php echo $this->Html->script('ajout/src/renderers/canvas/sigma.canvas.extremities.def.js');?>
 <?php echo $this->Html->script('ajout/src/middlewares/sigma.middlewares.rescale.js');?>
 <?php echo $this->Html->script('ajout/src/middlewares/sigma.middlewares.copy.js');?>
@@ -462,8 +457,6 @@
 					else if(src==0) g.nodes[dst].lev=1;
 				}
 			}
-			
-			//TODO declaration du graphe 
 			
 			s = new sigma({
 				graph: g,
