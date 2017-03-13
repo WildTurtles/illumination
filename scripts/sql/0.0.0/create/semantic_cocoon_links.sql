@@ -6,5 +6,5 @@ CREATE TABLE semantic_cocoon_links (
   created                     timestamp,
   updated                     timestamp,
   PRIMARY KEY (id));
-ALTER TABLE semantic_cocoon_links ADD CONSTRAINT FKsemantic_c997977 FOREIGN KEY (semantic_cocoon_response_id) REFERENCES semantic_cocoon_responses (id);
+ALTER TABLE semantic_cocoon_links ADD CONSTRAINT FKsemantic_c997977 FOREIGN KEY (semantic_cocoon_response_id) REFERENCES semantic_cocoon_responses (id) ON DELETE CASCADE ON DELETE CASCADE;
 

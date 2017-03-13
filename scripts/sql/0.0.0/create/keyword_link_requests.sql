@@ -7,6 +7,6 @@ CREATE TABLE keyword_link_requests (
   created             timestamp,
   updated             timestamp,
   PRIMARY KEY (id));
-ALTER TABLE keyword_link_requests ADD CONSTRAINT FKkeyword_li258132 FOREIGN KEY (semantic_request_id) REFERENCES semantic_requests (id);
+ALTER TABLE keyword_link_requests ADD CONSTRAINT FKkeyword_li258132 FOREIGN KEY (semantic_request_id) REFERENCES semantic_requests (id) ON DELETE CASCADE;
 ALTER TABLE keyword_link_requests ADD CONSTRAINT FKkeyword_li745121 FOREIGN KEY (keyword_id) REFERENCES keywords (id);
 

@@ -28,4 +28,3 @@ ALTER TABLE semantic_requests ADD CONSTRAINT FKsemantic_r130721 FOREIGN KEY (lan
 ALTER TABLE semantic_requests ADD CONSTRAINT FKsemantic_r667918 FOREIGN KEY (corpus_id) REFERENCES corpuses (id);
 ALTER TABLE semantic_requests ADD CONSTRAINT FKsemantic_r122583 FOREIGN KEY (account_id) REFERENCES accounts (id);
 ALTER TABLE semantic_requests ADD CONSTRAINT FKsemantic_r688373 FOREIGN KEY (category_id) REFERENCES categories (id);
-
