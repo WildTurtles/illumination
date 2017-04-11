@@ -202,6 +202,7 @@ class SemanticRequestsController extends AppController {
         $sem = new SemanticRequest();
         $parameter = $sem->setParameters($request, $configuration);
         $req_response = $sem->sendRequest($parameter);
+
         if ($req_response->isOk()) {
             $json = $req_response->json;
             if (!empty($json['keywords'])) {
@@ -225,7 +226,7 @@ class SemanticRequestsController extends AppController {
                 $this->Flash->error(__('Error number : ' . $errorMessage['number'] . '. Error message : ' . $errorMessage['message']));
                 $this->Flash->error(__('You should check your resquet is valid.'));
             } else {
-                $this->Flash->error(__('The request could not be execute. Please, try again. Error number ' . $response->getStatusCode()));
+                $this->Flash->error(__('The request could not be execute. Please, try again. Error number ' . $req_response->getStatusCode()));
             }
         }
         return $this->redirect(['action' => 'view', $request->id]);
